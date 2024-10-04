@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <title>@ViewData["Title"] - sistema_de_login_mvc</title>
+    <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+
+<body class="bg-gray-900 overflow-hidden">
+<header class="min-h-[1vh]">    
+    <h1 class="ms-1 text-white text-xl md:hidden">Code<span class="text-cyan-500">Lab</span></h1>
+</header>
+<main class="md:h-[95vh] px-8 flex flex-col md:flex-row items-center justify-center md:justify-between">
+    <img class="w-64 md:hidden" src="./iphone.svg" alt="imagem do iphone" />
+    <img class="hidden md:block w-1/2" src="./mac.png" alt="imagem do mac" />
+
+    <div class="md:flex flex-col w-full max-w-md xl:min-w-[30%] justify-around md:mt-0">
+        @RenderBody()
+    </div>
+</main>
+
+<footer class="text-center md:text-right text-gray-400 text-sm md:me-40 mt-0">
+    COPYRIGHT 2024 CODELAB
+</footer>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
