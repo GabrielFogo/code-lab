@@ -1,15 +1,26 @@
+using AspNetCore.Identity.MongoDbCore.Infrastructure;
+using CodeLab.Data;
+using CodeLab.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+ContextMongoDb.ConnectionString = builder.Configuration.GetSection("MongoConnection:ConnectionString").Value;
+ContextMongoDb.DatabaseName = builder.Configuration.GetSection("MongoConnection:Database").Value;
+ContextMongoDb.IsSsl = Convert.ToBoolean(builder.Configuration.GetSection("MongoConnection:IsSSL").Value);
+
+builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
+    .AddMongoDbStores<ApplicationUser, ApplicationRole, Guid>(
+        ContextMongoDb.ConnectionString, ContextMongoDb.DatabaseName
+    );
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
