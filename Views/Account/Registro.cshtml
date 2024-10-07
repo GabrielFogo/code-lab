@@ -1,25 +1,25 @@
-﻿@model LoginViewModel
+﻿@model RegisterViewModel
 @{
-Layout = "_AccountLayout";
+    Layout = "_AccountLayout";
 }
 
 <h1 class="hidden md:block text-xl lg:text-2xl text-center mb-4 lg:mb-5 text-white">
     Bem-vindo(a) à <br>
-    <span class="text-2xl lg:text-3xl text-white">Code<span class="text-cyan-100">Lab</span></span>
+    <span class="text-2xl lg:text-3xl">Code<span class="text-cyan-100">Lab</span></span>
 </h1>
 
-<h2 class="text-xl lg:text-2xl text-white text-center md:text-left">Login</h2>
+<h2 class="text-xl lg:text-2xl text-white text-center md:text-left">Registro</h2>
 <p class="text-xs lg:text-sm text-white mb-2 text-center md:text-left">
-    Faça seu login com email e senha
+    Crie sua conta com email e senha
 </p>
 
 <div asp-validation-summary="All" class="text-red-500 text-xs"></div>
 
-<form class="flex flex-col gap-1" asp-controller="Account" asp-action="Login" method="post">
+<form class="flex flex-col gap-1" asp-controller="Account" asp-action="Registro" method="post">
     <input class="text-xs lg:text-sm focus:outline-none border border-gray-500 focus:border-cyan-100 rounded p-2 lg:p-3 bg-gray-800 custom-shadow-inner text-gray-400 w-full"
            type="text"
            placeholder="Email"
-           asp-for="Username" />
+           asp-for="Email" />
 
     <input class="text-xs lg:text-sm focus:outline-none border border-gray-500 focus:border-cyan-100 rounded p-2 lg:p-3 bg-gray-800 custom-shadow-inner text-gray-400 w-full"
            type="password"
@@ -28,18 +28,17 @@ Layout = "_AccountLayout";
 
     <button type="submit"
             class="text-base lg:text-lg mt-2 bg-cyan-gradient text-center py-2 lg:py-3 text-white rounded-md border border-gray-200 shadow-custom-inset shadow-custom-light hover:bg-cyan-200 transition">
-        Entrar
+        Criar Conta
     </button>
 </form>
 
 <div class="flex justify-between mt-3 text-xs lg:text-sm text-cyan-100">
-    <a href="#" class="underline">Esqueci minha senha</a>
-    <a asp-controller="Account" asp-action="Registro" class="underline">Criar nova conta</a>
+    <a asp-controller="Account" asp-action="Login" class="underline">Já tenho uma conta</a>
 </div>
 
 <div class="border border-gray-700 my-4"></div>
 
-<p class="text-xs lg:text-sm text-white text-center md:text-left">Ou entre com</p>
+<p class="text-xs lg:text-sm text-white text-center md:text-left">Ou registre-se com</p>
 
 <div class="flex justify-between mt-2">
     <button class="bg-gray-700 p-2 rounded text-white w-1/2 mr-2">Google</button>
