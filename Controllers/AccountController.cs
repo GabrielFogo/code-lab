@@ -35,9 +35,10 @@ public class AccountController : Controller
     {
         if (ModelState.IsValid)
         {
-            var user = new ApplicationUser { UserName = model.Email, Email = model.Email};
+            var user = new ApplicationUser { UserName = model.Email, Email = model.Email, XpNescessario = 0, XpGanho = 0, Dinheiro = 0};
+            
             var result = await _userManager.CreateAsync(user, model.Password!);
-
+            
             if (result.Succeeded)
             {
                 await _signInManager.SignInAsync(user, isPersistent: false);
