@@ -1,5 +1,6 @@
 using CodeLab.Data;
 using CodeLab.Models;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,16 +15,25 @@ builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
         ContextMongoDb.ConnectionString, ContextMongoDb.DatabaseName
     );
 
+// Autorização com política Admin
+builder.Services.AddAuthorizationBuilder()
+    .AddPolicy("AdminOnly", policyBuilder => policyBuilder.RequireRole("Admin"));
+
 // Configuração de cookies de autenticação
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.LoginPath = "/Login"; // Defina o caminho de login
+    options.AccessDeniedPath = "/";
 });
+
+// Registre o UserSeeder para poder injetá-lo
+builder.Services.AddTransient<UserSeeder>();
 
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
+// Configurações de produção
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -38,6 +48,13 @@ app.UseRouting();
 // Adicionar autenticação antes da autorização
 app.UseAuthentication();
 app.UseAuthorization();
+
+// Adicionando seeding do admin na inicialização
+using (var scope = app.Services.CreateScope())
+{
+    var seeder = scope.ServiceProvider.GetRequiredService<UserSeeder>();
+    await seeder.Run(); // Chama o método que faz o seed do usuário admin
+}
 
 app.MapControllerRoute(
     name: "default",
