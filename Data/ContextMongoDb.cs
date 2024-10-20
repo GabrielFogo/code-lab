@@ -1,4 +1,5 @@
 ﻿using System.Security.Authentication;
+using CodeLab.Models;
 using MongoDB.Driver;
 
 namespace CodeLab.Data
@@ -9,7 +10,7 @@ namespace CodeLab.Data
         public static string? DatabaseName { get; set; }
         public static bool IsSsl { get; set; }
         
-        private IMongoDatabase? _database;
+        private IMongoDatabase _database;
 
         public ContextMongoDb()
         {
@@ -40,6 +41,6 @@ namespace CodeLab.Data
             }
         }
 
-        public IMongoDatabase? GetDatabase() => _database;
+        public IMongoCollection<Pergunta> Perguntas => _database.GetCollection<Pergunta>("Perguntas");
     }
 }

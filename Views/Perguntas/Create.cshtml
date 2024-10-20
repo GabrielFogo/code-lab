@@ -1,0 +1,66 @@
+﻿@model CriaPerguntaViewModel
+
+<div class="flex items-center justify-center">
+    <form class="flex flex-col" method="post">
+        <h1>Escolhas</h1>
+        <div class="flex space-x-4">
+            <select asp-for="Linguagem">
+                <option value="">Selecione uma linguagem</option>
+                <option value="html">Html</option>
+                <option value="csharp">C#</option>
+                <option value="php">Php</option>
+                <option value="javascript">Javascript</option>
+                <option value="sql">Sql</option>
+            </select>
+            <span asp-validation-for="Linguagem" class="text-red-500"></span>
+
+            <select asp-for="Nivel">
+                <option value="">Selecione um nível</option>
+                <option value="1">Básico</option>
+                <option value="2">Normal</option>
+                <option value="3">Avançado</option>
+            </select>
+            <span asp-validation-for="Nivel" class="text-red-500"></span>
+        </div>
+
+        <h1>Pergunta</h1>
+        <input asp-for="Descricao" type="text" placeholder="Digite a pergunta"/>
+        <span asp-validation-for="Descricao" class="text-red-500"></span>
+
+        <h1>Alternativas</h1>
+        <label>A</label>
+        <input asp-for="Alternativa1" type="text" placeholder="Digite a alternativa A"/>
+        <span asp-validation-for="Alternativa1" class="text-red-500"></span>
+
+        <label>B</label>
+        <input asp-for="Alternativa2" type="text" placeholder="Digite a alternativa B"/>
+        <span asp-validation-for="Alternativa2" class="text-red-500"></span>
+
+        <label>C</label>
+        <input asp-for="Alternativa3" type="text" placeholder="Digite a alternativa C"/>
+        <span asp-validation-for="Alternativa3" class="text-red-500"></span>
+
+        <label>D</label>
+        <input asp-for="Alternativa4" type="text" placeholder="Digite a alternativa D"/>
+        <span asp-validation-for="Alternativa4" class="text-red-500"></span>
+
+        <h1>Resposta Certa</h1>
+        <div class="flex space-x-4">
+            <label>
+                <input type="radio" asp-for="AlternativaCorreta" value="A" class="mr-2" /> A
+            </label>
+            <label>
+                <input type="radio" asp-for="AlternativaCorreta" value="B" class="mr-2" /> B
+            </label>
+            <label>
+                <input type="radio" asp-for="AlternativaCorreta" value="C" class="mr-2" /> C
+            </label>
+            <label>
+                <input type="radio" asp-for="AlternativaCorreta" value="D" class="mr-2" /> D
+            </label>
+        </div>
+        <span asp-validation-for="AlternativaCorreta" class="text-red-500"></span>
+
+        <button type="submit">Salvar Pergunta</button>
+    </form>
+</div>

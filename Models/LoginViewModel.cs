@@ -8,6 +8,5 @@ public class LoginViewModel
     public string? Username { get; init; }
 
     [Required(ErrorMessage = "O campo senha não pode estar vazio.")]
-    [DataType(DataType.Password)]
     public string? Password { get; init; }
 }

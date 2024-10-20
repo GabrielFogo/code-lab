@@ -13,16 +13,16 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
 <body>
-<header class="bg-gray-800 py-4 border-gray-700 border-b">
+<header class="bg-gray-800 py-2 border-gray-700 border-b">
     <nav class="flex justify-evenly items-center">
             @if(SignInManager.IsSignedIn(User))
             {
                 var user = await UserManager.FindByEmailAsync(User.Identity.Name);
                 if (user != null)
                 {
-                    <img src="userIcon.png" alt="Icone Usuario"/>
+                    <img src="~/userIcon.png" alt="Icone Usuario"/>
                     <div class="flex gap-1">
-                        <img src="CashLab.png" alt="Denhero kkkkk"/>
+                        <img src="~/CashLab.png" alt="Denhero kkkkk"/>
                         <span class="text-green">@user.Dinheiro</span>
                     </div>
                     <div>
@@ -33,16 +33,14 @@
     </nav>
 </header>
 
-<div class="container">
-    <main role="main" class="pb-3">
-        @RenderBody()
-    </main>
-</div>
 
-<footer class="border-top footer text-muted">
-    <div class="container">
+<main role="main" class="bg-gray-900 min-h-[88.5vh]">
+    @RenderBody()
+</main>
+
+
+<footer class="bg-gray-800">
         &copy; 2024 - CodeLab - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-    </div>
 </footer>
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>

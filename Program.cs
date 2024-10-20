@@ -1,5 +1,6 @@
 using CodeLab.Data;
 using CodeLab.Models;
+using CodeLab.Services;
 using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,6 +29,8 @@ builder.Services.ConfigureApplicationCookie(options =>
 
 // Registre o UserSeeder para poder injetá-lo
 builder.Services.AddTransient<UserSeeder>();
+builder.Services.AddSingleton<ContextMongoDb>();
+builder.Services.AddSingleton<IPerguntaRepository, PerguntasRepository>();
 
 builder.Services.AddControllersWithViews();
 
