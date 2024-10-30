@@ -73,7 +73,7 @@ namespace CodeLab.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("Perguntas/Delete")] // Adicione a rota aqui
+        [Route("Perguntas/Delete")]
         public async Task<IActionResult> Delete(string id)
         { 
             if (string.IsNullOrEmpty(id))
