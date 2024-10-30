@@ -14,10 +14,12 @@ public class PerguntasRepository : IPerguntaRepository
     }
 
     // Método para obter perguntas por linguagem
-    public async Task<List<Pergunta>> GetFiltredAsync(string linguagem)
+    public async Task<List<Pergunta>> GetFiltredAsync(string linguagem, string nivel)
     {
-        var filter = Builders<Pergunta>.Filter.Eq(p => p.Linguagem, linguagem);
-
+        var langFilter = Builders<Pergunta>.Filter.Eq(p => p.Linguagem, linguagem);
+        var nivelFilter = Builders<Pergunta>.Filter.Eq(p => p.Nivel, nivel);
+        var filter = Builders<Pergunta>.Filter.And(langFilter, nivelFilter);
+        
         return await _perguntasCollection.Find(filter).ToListAsync();
     }
 

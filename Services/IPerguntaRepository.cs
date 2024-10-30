@@ -4,7 +4,7 @@ namespace CodeLab.Services;
 
 public interface IPerguntaRepository
 {
-    Task<List<Pergunta>> GetFiltredAsync(string linguagem);
+    Task<List<Pergunta>> GetFiltredAsync(string linguagem, string nivel);
     Task<Pergunta> GetPerguntaByIdAsync(string id);
     Task CreateAsync(Pergunta pergunta);
     Task UpdateAsync(string id, Pergunta perguntaAtualizada);

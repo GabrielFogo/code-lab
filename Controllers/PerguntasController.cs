@@ -16,9 +16,9 @@ namespace CodeLab.Controllers
             _perguntaRepository = perguntaRepository;
         }
 
-        public async Task<IActionResult> Index([FromQuery] string lang = "html")
+        public async Task<IActionResult> Index([FromQuery] string lang = "html", string nivel = "1")
         {
-            var perguntas = await _perguntaRepository.GetFiltredAsync(lang);
+            var perguntas = await _perguntaRepository.GetFiltredAsync(lang, nivel);
             return View(perguntas);
         }
 
@@ -68,7 +68,22 @@ namespace CodeLab.Controllers
             };
 
             await _perguntaRepository.CreateAsync(pergunta);
-            return RedirectToAction("Create","Perguntas");
+            return RedirectToAction("Index","Perguntas");
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Route("Perguntas/Delete")] // Adicione a rota aqui
+        public async Task<IActionResult> Delete(string id)
+        { 
+            if (string.IsNullOrEmpty(id))
+            {
+                return BadRequest("ID não pode ser nulo ou vazio.");
+            }
+
+            await _perguntaRepository.DeleteAsync(id);
+            return RedirectToAction("Index", "Perguntas");
+        }
+
     }
 }
