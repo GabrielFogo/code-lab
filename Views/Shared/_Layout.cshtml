@@ -11,18 +11,20 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
 </head>
-<body>
-<header class="bg-gray-800 py-4 border-gray-700 border-b">
+<body class="overflow-x-hidden">
+<header class="bg-gray-800 py-2 border-gray-700 border-b">
     <nav class="flex justify-evenly items-center">
             @if(SignInManager.IsSignedIn(User))
             {
                 var user = await UserManager.FindByEmailAsync(User.Identity.Name);
                 if (user != null)
                 {
-                    <img src="userIcon.png" alt="Icone Usuario"/>
+                    <img src="~/userIcon.png" alt="Icone Usuario"/>
                     <div class="flex gap-1">
-                        <img src="CashLab.png" alt="Denhero kkkkk"/>
+                        <img src="~/CashLab.png" alt="Denhero kkkkk"/>
                         <span class="text-green">@user.Dinheiro</span>
                     </div>
                     <div>
@@ -33,17 +35,32 @@
     </nav>
 </header>
 
-<div class="container">
-    <main role="main" class="pb-3">
-        @RenderBody()
-    </main>
-</div>
 
-<footer class="border-top footer text-muted">
-    <div class="container">
-        &copy; 2024 - CodeLab - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-    </div>
+<main role="main" class="bg-gray-900 min-h-[84vh]">
+    @RenderBody()
+</main>
+
+<footer class="bg-gray-800 border-t border-gray-700 py-3 flex items-center justify-center justify-evenly">
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-controller="Home" asp-action="Index" class="@(ViewContext.RouteData.Values["controller"].ToString() == "Home" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "text-white active" : "")">Início</a>
+
+        <a asp-controller="Perguntas" asp-action="Create" class="@(ViewContext.RouteData.Values["controller"].ToString() == "Perguntas" && ViewContext.RouteData.Values["action"].ToString() == "Create" ? "text-white active" : "")">Perguntas</a>
+
+        <a asp-controller="Perguntas" asp-action="Index" class="@(ViewContext.RouteData.Values["controller"].ToString() == "Perguntas" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "text-white active" : "")">Editar</a>
+
+        <a asp-controller="Fotos" asp-action="Index" class="@(ViewContext.RouteData.Values["controller"].ToString() == "Fotos" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "text-white active" : "")">Fotos</a>
+
+        <form asp-controller="Account" asp-action="Logout" method="post">
+            <button type="submit">Logout</button>
+        </form>
+    }
+    else
+    {
+        <p>Nao é admin</p>
+    }
 </footer>
+
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
