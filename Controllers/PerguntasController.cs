@@ -7,10 +7,20 @@ namespace CodeLab.Controllers
     public class PerguntasController : Controller
     {
         [HttpGet]
-        [Route("/Editar")]
+        [Route("/EditarHtml")]
         public IActionResult Index()
         {
-            return View("Editar");
+            return View("EditarHtml");
+        }
+
+        public IActionResult Lorem()
+        {
+            return RedirectToAction("Inicio");
+        }
+
+        public IActionResult Inicio()
+        {
+            return View("Inicio");
         }
     }
 }
