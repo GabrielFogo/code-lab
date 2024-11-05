@@ -23,6 +23,7 @@ namespace CodeLab.Controllers
         }
 
         [HttpGet]
+
         public IActionResult Create()
         {
             return View();
