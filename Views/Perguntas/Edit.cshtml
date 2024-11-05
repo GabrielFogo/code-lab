@@ -1,4 +1,7 @@
 ﻿@model PerguntaViewModel
+@{
+    Layout = "_Layout";
+}
 
 <div class="flex items-center justify-center">
     <form class="flex flex-col" method="post">
@@ -41,19 +44,25 @@
         <span asp-validation-for="Alternativa3" class="text-red-500"></span>
 
         <h1>Resposta Certa</h1>
+        <h1>Resposta Certa</h1>
         <div class="flex space-x-4">
             <label>
-                <input type="radio" asp-for="AlternativaCorreta" value="A" class="mr-2" /> A
+                <input type="radio" asp-for="AlternativaCorreta" value="A" class="mr-2"
+                       checked="@(Model.AlternativaCorreta == "A")" /> A
             </label>
             <label>
-                <input type="radio" asp-for="AlternativaCorreta" value="B" class="mr-2" /> B
+                <input type="radio" asp-for="AlternativaCorreta" value="B" class="mr-2"
+                       checked="@(Model.AlternativaCorreta == "B")" /> B
             </label>
             <label>
-                <input type="radio" asp-for="AlternativaCorreta" value="C" class="mr-2" /> C
+                <input type="radio" asp-for="AlternativaCorreta" value="C" class="mr-2"
+                       checked="@(Model.AlternativaCorreta == "C")" /> C
             </label>
         </div>
-        <span asp-validation-for="AlternativaCorreta" class="text-red-500"></span>
 
+
+        <span asp-validation-for="AlternativaCorreta" class="text-red-500"></span>
+        
         <button type="submit">Salvar Pergunta</button>
     </form>
 </div>

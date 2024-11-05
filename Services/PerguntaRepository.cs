@@ -43,7 +43,8 @@ public class PerguntasRepository : IPerguntaRepository
             .Set(p => p.Linguagem, perguntaAtualizada.Linguagem)
             .Set(p => p.Description, perguntaAtualizada.Description)
             .Set(p => p.NumeroDeErros, perguntaAtualizada.NumeroDeErros)
-            .Set(p => p.Nivel, perguntaAtualizada.Nivel);
+            .Set(p => p.Nivel, perguntaAtualizada.Nivel)
+            .Set(p => p.AlternativaCorreta, perguntaAtualizada.AlternativaCorreta);
         // Atualizando as alternativas
         for (int i = 0; i < perguntaAtualizada.Alternativas.Count; i++)
         {

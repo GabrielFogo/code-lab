@@ -30,42 +30,12 @@ namespace CodeLab.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Linguagem,Nivel,Descricao,Alternativa1,Alternativa2,Alternativa3,Alternativa4,AlternativaCorreta")] CriaPerguntaViewModel model)
+        public async Task<IActionResult> Create([Bind("Linguagem,Nivel,Descricao,Alternativa1,Alternativa2,Alternativa3,Alternativa4,AlternativaCorreta")] PerguntaViewModel model)
         {
             if (!ModelState.IsValid)
                 return View(model);
 
-            var pergunta = new Pergunta
-            {
-                Linguagem = model.Linguagem,
-                Description = model.Descricao,
-                Nivel = model.Nivel,
-                NumeroDeErros = 0,
-                Alternativas = new List<Alternativa> {
-                    new Alternativa()
-                    {
-                        Description = model.Descricao,
-                        LetrasAlternativa = "A"
-                    },
-                    new Alternativa()
-                    {
-                        Description = model.Descricao,
-                        LetrasAlternativa = "B"
-                    },
-                    new Alternativa()
-                    {
-                        Description = model.Descricao,
-                        LetrasAlternativa = "C"
-                    },
-                    new Alternativa()
-                    {
-                        Description = model.Descricao,
-                        LetrasAlternativa = "D"
-                    },
-
-                },
-                AlternativaCorreta = model.AlternativaCorreta,
-            };
+            var pergunta = PerguntaViewModel.ToPergunta(model);
 
             await _perguntaRepository.CreateAsync(pergunta);
             return RedirectToAction("Index","Perguntas");
@@ -82,6 +52,28 @@ namespace CodeLab.Controllers
             }
 
             await _perguntaRepository.DeleteAsync(id);
+            return RedirectToAction("Index", "Perguntas");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(string id)
+        {
+            var pergunta = await _perguntaRepository.GetPerguntaByIdAsync(id);
+            var perguntaModel = Pergunta.ToPerguntaViewModel(pergunta);
+            
+            return View(perguntaModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(string id, [Bind("Linguagem,Nivel,Descricao,Alternativa1,Alternativa2,Alternativa3,Alternativa4,AlternativaCorreta")] PerguntaViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+            
+            var pergunta = PerguntaViewModel.ToPergunta(model);
+            
+            await _perguntaRepository.UpdateAsync(id, pergunta);
             return RedirectToAction("Index", "Perguntas");
         }
 
