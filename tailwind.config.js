@@ -62,5 +62,8 @@ module.exports = {
       'custom-inset': '0px 0px 10px 10px #00000040 inset',
     },
   },
-  plugins: [],
+    plugins: [
+        require('tailwindcss'),
+        require('autoprefixer'),
+    ],
 }
