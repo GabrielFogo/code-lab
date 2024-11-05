@@ -16,6 +16,10 @@
     <PackageReference Include="MongoDB.Driver" Version="2.29.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Inicio\Inicio.cshtml" />
+  </ItemGroup>
+
   <Target Name="Tailwind" BeforeTargets="Build">
     <Exec Command="npm run css:build" />
   </Target>
