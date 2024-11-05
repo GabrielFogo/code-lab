@@ -3,19 +3,18 @@
 Layout = "_AccountLayout";
 }
 
-<h1 class="hidden md:block text-3xl text-center mb-4 lg:mb-5 text-white">
+<h1 class="md:block text-4xl lg:text-4xl text-center mb-4 lg:mb-5 text-white">
     Bem-vindo(a) à <br>
     <span class="text-2xl lg:text-3xl text-white">Code<span class="text-cyan-100">Lab</span></span>
 </h1>
 
-<h2 class="text-xl lg:text-2xl text-white text-center md:text-left">Login</h2>
-<p class="text-xs lg:text-sm text-white mb-2 text-center md:text-left">
-    Faça seu login com email e senha
-</p>
-
 <div asp-validation-summary="All" class="text-red-500 text-xs"></div>
 
 <form class="flex flex-col gap-1" asp-controller="Account" asp-action="Login" method="post">
+    <h2 class="text-xl lg:text-2xl text-white md:text-left">Login</h2>
+    <p class="text-xs lg:text-sm text-white mb-2 md:text-left">
+        Faça seu login com email e senha
+    </p>
     <input class="text-xs lg:text-sm focus:outline-none border border-gray-500 focus:border-cyan-100 rounded p-2 lg:p-3 bg-gray-800 custom-shadow-inner text-gray-400 w-full"
            type="text"
            placeholder="Email"
@@ -32,16 +31,22 @@ Layout = "_AccountLayout";
     </button>
 </form>
 
-<div class="flex justify-between mt-3 text-xs lg:text-sm text-cyan-100">
+<div class="flex justify-between text-xs lg:text-sm text-cyan-100">
     <a href="#" class="underline">Esqueci minha senha</a>
     <a asp-controller="Account" asp-action="Registro" class="underline">Criar nova conta</a>
 </div>
 
 <div class="border border-gray-700 my-4"></div>
 
-<p class="text-xs lg:text-sm text-white text-center md:text-left">Ou entre com</p>
+<p class="text-xs lg:text-sm text-white text-start md:text-left">Ou entre com</p>
 
 <div class="flex justify-between mt-2">
-    <button class="bg-gray-700 p-2 rounded text-white w-1/2 mr-2">Google</button>
-    <button class="bg-gray-700 p-2 rounded text-white w-1/2 ml-2">Facebook</button>
+    <button class="bg-gray-700 p-2 rounded text-white w-1/2 mr-2">
+        <i class="fa-brands fa-google"></i>
+            Google
+        </button>
+    <button class="bg-gray-700 p-2 rounded text-white w-1/2 ml-2">
+        <i class="fa-brands fa-facebook-f"></i>
+        Facebook
+    </button>
 </div>

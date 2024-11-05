@@ -1,0 +1,161 @@
+﻿:root {
+  /* Colors */
+  --Black: #000000;
+  --Gray-900: #0e0e0e;
+  --Gray-800: #121214;
+  --Gray-700: #1e1e1e;
+  --Gray-600: #2e2e2e;
+  --Gray-500: #212121;
+  --Gray-400: #353535;
+  --Gray-400-alt: #595959;
+  --Gray-200: #9f9f9f;
+  --Gray-100: #d9d9d9;
+  --White: #ffffff;
+
+  --Orange: #ff4d00;
+  --Blue: #0038ff;
+  --Yellow: #faff00;
+  --Cyan-200: #16495a;
+  --Cyan-100: #2f9cc0;
+  --Green: #3bce07;
+  --Red-500: #bb0000;
+
+  /* Font family */
+  --Font-family: "Kanit", sans-serif;
+
+  /* Font sizes */
+  --Font-2xs: 0.625rem; /* 10px */
+  --Font-xs: 0.75rem; /* 12px */
+  --Font-sm: 0.875rem; /* 14px */
+  --Font-md: 1rem; /* 16px */
+  --Font-lg: 1.125rem; /* 18px */
+  --Font-xl: 1.5rem; /* 24px */
+
+  /* Radius */
+  --Radius-sm: 0.1875rem; /* 3px */
+  --Radius-md: 0.4375rem; /* 7px */
+  --Radius-lg: 1.25rem; /* 20px */
+}
+
+body,
+html {
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+
+main {
+  background-color: var(--Black);
+}
+
+.main-accountLayout {
+  display: flex;
+  width: 100%;
+  height: 95vh;
+  align-items: center;
+  justify-content: center;
+  padding-right: 7rem;
+}
+
+.iphone-img {
+  display: none;
+  width: 300px;
+}
+
+.lenguages-img {
+  z-index: 999;
+  position: absolute;
+  width: 55rem;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+
+.loginRenderBody {
+  height: 100vh;
+  width: 450px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.container-RenderBody {
+  gap: 1rem;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container-RenderBody form {
+  text-align: start;
+}
+
+.container-RenderBody input {
+  padding: 12px;
+}
+
+.container-RenderBody button {
+  padding: 9px;
+  font-size: 20px;
+}
+
+.button-login {
+  margin-top: 0.5rem;
+  background: linear-gradient(90deg, #16495a 0%, #2f9cc0 100%);
+  text-align: center;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  color: #ffffff;
+  border-radius: 0.375rem;
+  border: 1px solid #e5e7eb;
+  box-shadow: inset 0 0 10px 10px rgba(0, 0, 0, 0.25),
+    0 7px 5px 2px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.container-imagens-login {
+  display: flex;
+  width: 70%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+/*  Mobile  */
+
+@media screen and (max-width: 768px) {
+  .main-accountLayout {
+    flex-direction: column;
+    padding-right: 0;
+  }
+
+  .iphone-img {
+    display: flex;
+  }
+
+  .container-imagens-login {
+    display: none;
+    width: 0%;
+    height: 0%;
+  }
+
+  .loginRenderBody {
+    height: 100%;
+    width: 80%;
+  }
+}
+
+/* FOOTER */
+.footerAccountLayout {
+  justify-content: center;
+  width: 100%;
+  height: 5vh;
+  display: flex;
+  background-color: var(--Black);
+  align-items: center;
+}
+
+.footerAccountLayout p {
+  color: var(--Gray-400-alt);
+}
