@@ -1,4 +1,5 @@
 ﻿using CodeLab.Models;
+using CodeLab.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,11 +9,13 @@ public class AccountController : Controller
 {
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly SignInManager<ApplicationUser> _signInManager;
+    private readonly IAdminService _adminService;
 
-    public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+    public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IAdminService adminService)
     {
         _userManager = userManager;
         _signInManager = signInManager;
+        _adminService = adminService;
     }
 
     [HttpGet]
@@ -69,7 +72,9 @@ public class AccountController : Controller
 
             if (result.Succeeded)
             {
-                return RedirectToAction("Index", "Home");
+                if(model.Username != _adminService.GetAdminEmail())
+                 return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Admin");
             }
 
             ModelState.AddModelError(string.Empty, "Invalid login attempt.");

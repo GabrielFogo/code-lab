@@ -1,4 +1,5 @@
 ﻿using CodeLab.Models;
+using CodeLab.Services;
 using Microsoft.AspNetCore.Identity;
 
 namespace CodeLab.Data;
@@ -8,34 +9,25 @@ public class UserSeeder
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly RoleManager<ApplicationRole> _roleManager;
     private readonly IConfiguration _configuration;
+    private readonly IAdminService _adminService;
 
-    public UserSeeder(UserManager<ApplicationUser> userManager, RoleManager<ApplicationRole> roleManager, IConfiguration configuration)
+    public UserSeeder(UserManager<ApplicationUser> userManager, RoleManager<ApplicationRole> roleManager,IAdminService adminService, IConfiguration configuration)
     {
         _userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
         _roleManager = roleManager ?? throw new ArgumentNullException(nameof(roleManager));
         _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
+        _adminService = adminService ?? throw new ArgumentNullException(nameof(adminService));
     }
 
     public async Task Run()
     {
-        var adminEmail = GetAdminEmail();
-        var adminPassword = GetAdminPassword();
+        var adminEmail = _adminService.GetAdminEmail();
+        var adminPassword = _adminService.GetAdminPassword();
 
         await EnsureRoleExists("Admin");
         await EnsureAdminUserExists(adminEmail, adminPassword);
     }
 
-    private string GetAdminEmail()
-    {
-        var email = _configuration.GetValue<string>("Admin:Email");
-        return !string.IsNullOrEmpty(email) ? email : throw new InvalidOperationException("Admin email is required in configuration.");
-    }
-
-    private string GetAdminPassword()
-    {
-        var password = _configuration.GetValue<string>("Admin:Password");
-        return !string.IsNullOrEmpty(password) ? password : throw new InvalidOperationException("Admin password is required in configuration.");
-    }
 
     private async Task EnsureRoleExists(string roleName)
     {

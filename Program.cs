@@ -1,3 +1,4 @@
+
 using CodeLab.Data;
 using CodeLab.Models;
 using CodeLab.Services;
@@ -31,6 +32,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 builder.Services.AddTransient<UserSeeder>();
 builder.Services.AddSingleton<ContextMongoDb>();
 builder.Services.AddSingleton<IPerguntaRepository, PerguntasRepository>();
+builder.Services.AddSingleton<IAdminService, AdminService>();
 
 builder.Services.AddControllersWithViews();
 
