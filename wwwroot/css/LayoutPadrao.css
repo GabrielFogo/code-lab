@@ -1,0 +1,207 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Kanit", sans-serif;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  background-color: #0e0e0e;
+  overflow-x: hidden;
+}
+
+/* -- Header Mobile -- */
+
+.headerMobile {
+  z-index: 999;
+  display: none;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 75px;
+  background-color: #121214;
+  border-bottom: 2px solid #2e2e2e;
+  padding: 0 25px;
+}
+
+.headerMobile nav {
+  width: 100vw;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.user-info img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.user-cash {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.user-cash img {
+  width: 24px;
+  height: 24px;
+}
+
+.text-green {
+  color: #38a169;
+}
+
+/* -- Main -- */
+
+main {
+  border-bottom: 3px solid #2e2e2e;
+  border-left: 3px solid #2e2e2e;
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.mainLayout {
+  min-height: 95.9vh;
+  background-color: #121214;
+}
+
+/* -- Side Bar -- */
+.sidebar {
+  display: flex;
+  padding: 60px 0;
+  width: 250px;
+  height: 100%;
+  background-color: #121213;
+  padding-top: 20px;
+  position: fixed;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.sidebar h2 {
+  color: #2e2e2e;
+  text-align: center;
+}
+
+.sidebar ul {
+  list-style-type: none;
+}
+
+.sidebar ul li {
+  margin: 20px 0;
+}
+
+.sidebar li .btn-sidebar {
+  text-decoration: none;
+  color: #2e2e2e;
+  font-size: 18px;
+  padding: 10px 50px;
+  display: block;
+  text-align: center;
+}
+
+.sidebar i {
+  gap: 10px;
+  height: 50px;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+}
+
+.sidebar .bx-log-out {
+  width: 82.2px;
+}
+
+.sidebar li .btn-sidebar:hover,
+.sidebar li .btn-sidebar:hover i,
+.sidebar li .btn-sidebar:hover span {
+  background-color: #16495a;
+  color: white;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.cor-logo {
+  color: #2f9cc0;
+}
+
+.no-decoration {
+  font-size: 2.1rem;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+/* -- Footer's -- */
+
+.footerMobile {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  background-color: #121214;
+  height: 90px;
+  width: 100%;
+  border-top: 2px solid #2e2e2e;
+  max-width: 420px;
+}
+
+.footerDesktop {
+  width: 100%;
+  background-color: #121213;
+  text-align: center;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+.footerDesktop p {
+  font-size: 0.8rem;
+  color: #2e2e2e;
+}
+
+/* -- Responsividade -- */
+
+@media screen and (max-width: 600px) {
+  .footerMobile {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .footerDesktop {
+    display: none;
+  }
+
+  .headerMobile {
+    display: flex;
+  }
+
+  main {
+    border-bottom: 0px solid #2e2e2e;
+    border-left: 0px solid #2e2e2e;
+    position: fixed;
+  }
+}
