@@ -17,12 +17,21 @@
 <body class="overflow-x-hidden">
 <header class="headerMobile">
     <nav>
-        <img src="userIcon.png" alt="Icone Usuario" class="user-info">
-        <div class="user-cash">
-            <img src="CashLab.png" alt="Denhero kkkkk">
-            <span class="text-green">1000</span>
-        </div>
-        <div>150 / 200</div>
+        @if(SignInManager.IsSignedIn(User))
+            {
+                var user = await UserManager.FindByEmailAsync(User.Identity.Name);
+                if (user != null)
+                {
+                    <img src="~/userIcon.png" alt="Icone Usuario" class="user-info"/>
+                    <div class="user-cash">
+                        <img src="~/CashLab.png" alt="Denhero kkkkk"/>
+                        <span class="text-green">@user.Dinheiro</span>
+                    </div>
+                    <div>
+                        @user.XpGanho / @user.XpNescessario
+                    </div>
+                }
+            }
     </nav>
 </header>
 
