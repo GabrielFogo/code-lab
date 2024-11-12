@@ -44,8 +44,8 @@
     {
         <ul>
                 <li>
-                    <a asp-controller="Home" asp-action="Index" 
-                    class="@(ViewContext.RouteData.Values["controller"].ToString() == "Home" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "text-white active btn-sidebar" : "btn-sidebar")">
+                    <a asp-controller="Admin" asp-action="Index" 
+                    class="@(ViewContext.RouteData.Values["controller"].ToString() == "Admin" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "text-white active btn-sidebar" : "btn-sidebar")">
                     <i class="bx bx-home"><span>Inicio</span></i>
                     </a>
                 </li>
@@ -99,7 +99,7 @@
 <footer class="footerMobile">
     @if (User.IsInRole("Admin"))
     {
-        <a asp-controller="Home" asp-action="Index" class="@(ViewContext.RouteData.Values["controller"].ToString() == "Home" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "text-white active" : "")">Início</a>
+        <a asp-controller="Admin" asp-action="Index" class="@(ViewContext.RouteData.Values["controller"].ToString() == "Admin" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "text-white active" : "")">Início</a>
         <a asp-controller="Perguntas" asp-action="Create" class="@(ViewContext.RouteData.Values["controller"].ToString() == "Perguntas" && ViewContext.RouteData.Values["action"].ToString() == "Create" ? "text-white active" : "")">Perguntas</a>
         <a asp-controller="Perguntas" asp-action="Index" class="@(ViewContext.RouteData.Values["controller"].ToString() == "Perguntas" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "text-white active" : "")">Editar</a>
         <a asp-controller="Fotos" asp-action="Index" class="@(ViewContext.RouteData.Values["controller"].ToString() == "Fotos" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "text-white active" : "")">Fotos</a>
