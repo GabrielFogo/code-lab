@@ -1,0 +1,8 @@
+﻿@model Pergunta;
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2 class="text-white">@Model.Description</h2>
+<a class="text-white" asp-action="NextQuestion" asp-controller="Quiz">Proxima</a>

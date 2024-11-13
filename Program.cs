@@ -34,6 +34,7 @@ builder.Services.AddSingleton<ContextMongoDb>();
 builder.Services.AddSingleton<IPerguntaRepository, PerguntasRepository>();
 builder.Services.AddSingleton<IAdminService, AdminService>();
 
+builder.Services.AddSession();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -50,6 +51,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseSession();
 // Adicionar autenticação antes da autorização
 app.UseAuthentication();
 app.UseAuthorization();
