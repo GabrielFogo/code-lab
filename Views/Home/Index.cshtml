@@ -7,9 +7,9 @@ ViewData["Title"] = "Home Page";
     <button onclick="selecionaLinguagem('css')">Css</button>
     <button onclick="selecionaLinguagem('javascript')">Javascript</button>
     |
-    <button onclick="selecionaNivel('facil')">Facil</button>
-    <button onclick="selecionaNivel('medio')">Medio</button>
-    <button onclick="selecionaNivel('avancado')">Avançado</button>
+    <button onclick="selecionaNivel('1')">Facil</button>
+    <button onclick="selecionaNivel('2')">Medio</button>
+    <button onclick="selecionaNivel('3')">Avançado</button>
     |
     <button onclick="iniciarQuiz()">Iniciar</button>
 </div>
@@ -46,7 +46,7 @@ ViewData["Title"] = "Home Page";
     }
     
     function iniciarQuiz(){
-        let query = `?lang=${encodeURIComponent(linguagemSelecionada)}`
+        let query = `?lang=${encodeURIComponent(linguagemSelecionada)}&nivel=${encodeURIComponent(nivelSelecionado)}`
         window.location.href = '@Url.Action("Index", "Quiz")' + query;   
     }
 </script>

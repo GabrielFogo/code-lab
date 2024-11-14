@@ -1,8 +1,30 @@
-﻿@model Pergunta;
+﻿@model QuizViewModel;
 @{
     ViewBag.Title = "title";
     Layout = "_Layout";
 }
 
-<h2 class="text-white">@Model.Description</h2>
-<a class="text-white" asp-action="NextQuestion" asp-controller="Quiz">Proxima</a>
+<div class="flex flex-column">
+    <h2 class="text-white">@Model.Pergunta!.Description</h2>
+    <form class="flex flex-column gap-2">
+        <input type="hidden" value="@Model.QuizId" asp-for="QuizId"/>
+        @foreach (var alternativa in @Model.Pergunta.Alternativas)
+        {
+            <div>
+                <input type="radio" value="@alternativa.LetrasAlternativa" asp-for="@Model.AlternativaSeleciona"/>
+                <label>@alternativa.Description</label>
+            </div>
+        }
+    </form>
+    <button onclick="proximaPergunta()">Proxima</button>
+</div>
+<script>
+    function proximaPergunta() {
+        const url = new URL(window.location.href);
+        let page = parseInt(url.searchParams.get("page")) || 1;
+        page += 1;
+        url.searchParams.set("page", page);
+        window.location.href = url.toString();
+    }
+</script>
+
