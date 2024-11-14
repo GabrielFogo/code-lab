@@ -1,0 +1,170 @@
+:root {
+  --bg-fundo: #0e0e0e;
+  --bg-btn: #121214;
+  --gray-700: #1e1e1e;
+  --border-btn: #2e2e2e;
+  --gray-500: #212121;
+  --gray-400: #353535;
+  --gray-300: #595959;
+  --gray-200: #9f9f9f;
+  --gray-100: #d9d9d9;
+  --orange-html: #ff4d00;
+  --blue-css: #0038ff;
+  --yellow-js: #faff00;
+  --cyan-dark: #16495a;
+  --cyan-light: #2f9cc0;
+  --green: #3bce07;
+  --red-500: #bb0000;
+}
+
+.container-criarPergunta {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 84%;
+  align-items: center;
+}
+
+.m-bottom {
+  margin-bottom: 20px;
+}
+
+select {
+  background-color: var(--bg-btn);
+  border: 1px solid var(--border-btn);
+  color: var(--gray-300);
+  box-shadow: 0px 4px 3.5px #000000;
+  font-weight: 500;
+  border-radius: 7px;
+  height: 45px;
+  width: 125px;
+  margin-right: 10px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.c-escolhas {
+  display: flex;
+  width: 85%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+}
+
+select:focus {
+  border: 2px solid var(--cyan-dark);
+}
+
+.alt {
+  color: var(--gray-300);
+}
+
+input {
+  background-color: var(--bg-btn);
+  border: 1px solid var(--border-btn);
+  color: white;
+  border-radius: 7px;
+  padding: 10px;
+  height: 45px;
+  width: 100%;
+  box-shadow: 0px 4px 3.5px #000000;
+}
+
+input:focus {
+  box-shadow: 0px 4px 4px #000000, inset 2px 4px 10px -2px #000000;
+  outline: 1px solid var(--cyan-light);
+}
+
+.alternativas {
+  display: grid;
+  gap: 10px;
+}
+
+.resposta {
+  display: flex;
+  gap: 10px;
+}
+
+.resposta label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-btn);
+  border: 1px solid var(--border-btn);
+  color: var(--gray-300);
+  border-radius: 7px;
+  width: 100%;
+  height: 45px;
+  box-shadow: 0px 4px 3.5px #000000;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.resposta input[type="radio"] {
+  display: none;
+}
+
+/* Estilo do botão quando selecionado */
+.resposta input[type="radio"]:checked + span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 45px;
+  border-radius: 7px;
+  border: 1px solid var(--cyan-light);
+  color: white;
+  border: 1px solid #2f9cc0;
+  box-shadow: 0px 4px 4px #000000, inset 2px 4px 10px -2px #000000;
+
+  transition: 0.5s ease;
+}
+
+.botao-salvar-pergunta {
+  width: 100%;
+  height: 45px;
+  font-size: 18px;
+  color: white;
+  background: linear-gradient(267.92deg, #16495a 0%, #2f9cc0 100%);
+  border: 1px solid #9f9f9f;
+  box-shadow: 0px 7px 5px rgba(0, 0, 0, 0.5),
+    inset 0px 0px 10px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 7px;
+}
+
+/* button:hover{
+    background: linear-gradient(267.92deg, #348CAA 0%, #38CBFB 100%);
+    border: 1px solid #FFFFFF;
+    box-shadow: 0px 7px 5px 2px rgba(0, 0, 0, 0.5), inset 0px 0px 10px 10px rgba(0, 0, 0, 0.25);
+} */
+
+.botao-salvar-pergunta:active {
+  background: linear-gradient(267.92deg, #003044 0%, #006b8e 100%);
+  border: 1px solid #9f9f9f;
+  box-shadow: inset 0px 0px 10px 10px rgba(0, 0, 0, 0.25);
+  color: #9f9f9f;
+  transition: 0.5s ease;
+}
+
+h1 {
+  color: white;
+  font-size: 24px;
+}
+
+.c-icon__active:hover i,
+.c-icon__active:hover p {
+  color: white;
+}
+
+/* Quando clicado (classe .active), os ícones e o texto ficam brancos */
+.c-icon__active.active i,
+.c-icon__active.active p {
+  color: white;
+}
+
+@media screen and (min-width: 1200px) {
+  .container-criarPergunta {
+    width: 35%;
+  }
+}
