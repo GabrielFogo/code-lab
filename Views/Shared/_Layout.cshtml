@@ -1,4 +1,4 @@
-﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Identity
 @inject UserManager<ApplicationUser> UserManager
 @inject SignInManager<ApplicationUser> SignInManager
 
@@ -15,102 +15,102 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body class="overflow-x-hidden">
-<header class="headerMobile">
-    <nav>
-        @if(SignInManager.IsSignedIn(User))
-            {
-                var user = await UserManager.FindByEmailAsync(User.Identity.Name);
-                if (user != null)
+<div id="appLayoutPadrao" class="desktop-app">
+    <header class="headerMobile">
+        <nav>
+            @if(SignInManager.IsSignedIn(User))
                 {
-                    <img src="~/userIcon.png" alt="Icone Usuario" class="user-info"/>
-                    <div class="user-cash">
-                        <img src="~/CashLab.png" alt="Denhero kkkkk"/>
-                        <span class="text-green">@user.Dinheiro</span>
-                    </div>
-                    <div>
-                        @user.XpGanho / @user.XpNescessario
-                    </div>
+                    var user = await UserManager.FindByEmailAsync(User.Identity.Name);
+                    if (user != null)
+                    {
+                        <img src="~/userIcon.png" alt="Icone Usuario" class="user-info"/>
+                        <div class="user-cash">
+                            <img src="~/CashLab.png" alt="Denhero kkkkk"/>
+                            <span class="text-green">@user.Dinheiro</span>
+                        </div>
+                        <div>
+                            @user.XpGanho / @user.XpNescessario
+                        </div>
+                    }
                 }
-            }
-    </nav>
-</header>
-
-<nav>
-    <div class="sidebar">
-        <h2 class="no-underline">
-            <a href="index.html" class="no-decoration">Code<span class="cor-logo">Lab</span></a>
-        </h2>
-        @if (User.IsInRole("Admin"))
-    {
-        <ul>
-                <li>
-                    <a asp-controller="Admin" asp-action="Index" 
-                    class="@(ViewContext.RouteData.Values["controller"].ToString() == "Admin" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "text-white active btn-sidebar" : "btn-sidebar")">
-                    <i class="bx bx-home"><span>Inicio</span></i>
-                    </a>
-                </li>
-
-                <li>
-                    <a asp-controller="Perguntas" asp-action="Create" 
-                    class="@(ViewContext.RouteData.Values["controller"].ToString() == "Perguntas" && ViewContext.RouteData.Values["action"].ToString() == "Create" ? "text-white active btn-sidebar" : "btn-sidebar")">
-                    <i class="bx bx-question-mark"><span>Perguntas</span></i>
-                    </a>
-                </li>
-                <li>
-                    <a asp-controller="Perguntas" asp-action="Index" 
-                    class="@(ViewContext.RouteData.Values["controller"].ToString() == "Perguntas" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "text-white active btn-sidebar" : "btn-sidebar")">
-                    <i class="bx bx-edit"><span>Editar</span></i>
-                    </a>
-                </li>
-                <li>
-                    <a asp-controller="Fotos" asp-action="Index" 
-                    class="@(ViewContext.RouteData.Values["controller"].ToString() == "Fotos" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "text-white active btn-sidebar" : "btn-sidebar")">
-                    <i class="bx bx-image"><span>Fotos</span></i>
-                    </a>
-                </li>
-        </ul>
-                    <div>
+        </nav>
+    </header>
+    <div class="container-main"> 
+        <nav>
+            <div class="sidebar">
+                <h2 class="no-underline">
+                    <a href="index.html" class="no-decoration">Code<span class="cor-logo">Lab</span></a>
+                </h2>
+                @if (User.IsInRole("Admin"))
+            {
+                <ul>
                         <li>
-                            <form asp-controller="Account" asp-action="Logout" method="post">
-                                <button type="submit" class="btn-sidebar" style="background: none; border: none; padding: 0; cursor: pointer;">
-                                    <i class="bx bx-log-out">
-                                        <span>Sair</span>
-                                    </i>
-                                </button>
-                            </form>
+                            <a asp-controller="Home" asp-action="Index" 
+                            class="@(ViewContext.RouteData.Values["controller"].ToString() == "Home" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "branco-active btn-sidebar" : "btn-sidebar")">
+                            <i class="bx bx-home"><span>Inicio</span></i>
+                            </a>
                         </li>
-                    </div>
-    }
-    else
-    {
-        <p>Nao é admin</p>
-    }
+
+                        <li>
+                            <a asp-controller="Perguntas" asp-action="Create" 
+                            class="@(ViewContext.RouteData.Values["controller"].ToString() == "Perguntas" && ViewContext.RouteData.Values["action"].ToString() == "Create" ? "text-white active btn-sidebar" : "btn-sidebar")">
+                            <i class="bx bx-question-mark"><span>Adicionar</span></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-controller="Perguntas" asp-action="Index" 
+                            class="@(ViewContext.RouteData.Values["controller"].ToString() == "Perguntas" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "text-white active btn-sidebar" : "btn-sidebar")">
+                            <i class="bx bx-edit"><span>Perguntas</span></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-controller="Fotos" asp-action="Index" 
+                            class="@(ViewContext.RouteData.Values["controller"].ToString() == "Fotos" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "text-white active btn-sidebar" : "btn-sidebar")">
+                            <i class="bx bx-image"><span>Avatares</span></i>
+                            </a>
+                        </li>
+                </ul>
+                            <div>
+                                <li>
+                                    <form asp-controller="Account" asp-action="Logout" method="post">
+                                        <button type="submit" class="btn-sidebar" style="background: none; border: none; padding: 0; cursor: pointer;">
+                                            <i class="bx bx-log-out">
+                                                <span>Sair</span>
+                                            </i>
+                                        </button>
+                                    </form>
+                                </li>
+                            </div>
+            }
+            else
+            {
+                <p>Nao é admin</p>
+            }
+            </div>
+        </nav>
+
+        <main role="main" class="mainLayout">
+            @RenderBody()
+        </main>
     </div>
-</nav>
-
-<main role="main" class="mainLayout">
-    @RenderBody()
-</main>
-
-<footer class="footerDesktop">
-    <p>&copy;2024 CODELAB</p>
-</footer>
-
-<footer class="footerMobile">
-    @if (User.IsInRole("Admin"))
-    {
-        <a asp-controller="Admin" asp-action="Index" class="@(ViewContext.RouteData.Values["controller"].ToString() == "Admin" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "text-white active" : "")">Início</a>
-        <a asp-controller="Perguntas" asp-action="Create" class="@(ViewContext.RouteData.Values["controller"].ToString() == "Perguntas" && ViewContext.RouteData.Values["action"].ToString() == "Create" ? "text-white active" : "")">Perguntas</a>
-        <a asp-controller="Perguntas" asp-action="Index" class="@(ViewContext.RouteData.Values["controller"].ToString() == "Perguntas" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "text-white active" : "")">Editar</a>
-        <a asp-controller="Fotos" asp-action="Index" class="@(ViewContext.RouteData.Values["controller"].ToString() == "Fotos" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "text-white active" : "")">Fotos</a>
-        <form asp-controller="Account" asp-action="Logout" method="post"><button type="submit">Logout</button></form>
-    }
-    else
-    {
-        <p>Nao é admin</p>
-    }
-</footer>
-
+    <footer class="footerDesktop">
+        <p>&copy;2024 CODELAB</p>
+    </footer>
+    <footer class="footerMobile">
+        @if (User.IsInRole("Admin"))
+        {
+            <a asp-controller="Home" asp-action="Index" class="@(ViewContext.RouteData.Values["controller"].ToString() == "Home" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "text-white active" : "")">Início</a>
+            <a asp-controller="Perguntas" asp-action="Create" class="@(ViewContext.RouteData.Values["controller"].ToString() == "Perguntas" && ViewContext.RouteData.Values["action"].ToString() == "Create" ? "text-white active" : "")">Perguntas</a>
+            <a asp-controller="Perguntas" asp-action="Index" class="@(ViewContext.RouteData.Values["controller"].ToString() == "Perguntas" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "text-white active" : "")">Editar</a>
+            <a asp-controller="Fotos" asp-action="Index" class="@(ViewContext.RouteData.Values["controller"].ToString() == "Fotos" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "text-white active" : "")">Fotos</a>
+            <form asp-controller="Account" asp-action="Logout" method="post"><button type="submit">Logout</button></form>
+        }
+        else
+        {
+            <p>Nao é admin</p>
+        }
+    </footer>
+</div>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
