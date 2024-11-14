@@ -189,7 +189,7 @@ main {
 /* -- Footer's -- */
 
 .footerMobile {
-  display: flex;
+  display: none;
   position: absolute;
   bottom: 0;
   background-color: var(--bg-btn);
