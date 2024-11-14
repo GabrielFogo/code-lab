@@ -1,4 +1,4 @@
-﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Identity
 @inject UserManager<ApplicationUser> UserManager
 @inject SignInManager<ApplicationUser> SignInManager
 
@@ -14,8 +14,8 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
-<body class="overflow-x-hidden">
-<div id="appLayoutPadrao" class="desktop-app">
+<body>
+<div class="desktop-app">
     <header class="headerMobile">
         <nav>
             @if(SignInManager.IsSignedIn(User))
@@ -35,8 +35,8 @@
                 }
         </nav>
     </header>
-    <div class="container-main"> 
-        <nav>
+        <div id="appLayoutPadrao" class="container-main">
+            <nav>
             <div class="sidebar">
                 <h2 class="no-underline">
                     <a href="index.html" class="no-decoration">Code<span class="cor-logo">Lab</span></a>
@@ -89,8 +89,10 @@
             </div>
         </nav>
 
-        <main role="main" class="mainLayout">
-            @RenderBody()
+        <main role="main">
+           <div class="container-app">
+                @RenderBody()
+            </div>
         </main>
     </div>
     <footer class="footerDesktop">

@@ -1,3 +1,7 @@
+@import url(criarPergunta.css);
+@import url(root.css);
+@import url(quizIndex.css);
+
 * {
   margin: 0;
   padding: 0;
@@ -36,7 +40,7 @@ body {
   z-index: 999;
   display: none;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   width: 100%;
   height: 75px;
   background-color: #121214;
@@ -44,10 +48,24 @@ body {
   padding: 0 25px;
 }
 
+.img-perfil {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+}
+
+.perfil {
+  background-color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+}
+
 .headerMobile nav {
-  width: 100vw;
+  width: 100%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -73,15 +91,6 @@ body {
 }
 
 /* -- Main -- */
-
-main {
-  border-bottom: 3px solid #2e2e2e;
-  width: calc(100% - 250px);
-  height: 90vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-}
 
 .mainLayout {
   min-height: 95.9vh;
@@ -122,11 +131,11 @@ main {
   margin: 20px 0;
 }
 
-.sidebar li .btn-sidebar {
+div.sidebar li .btn-sidebar {
   text-decoration: none;
   color: #2e2e2e;
-  font-size: 18px;
-  padding: 10px 50px;
+  font-size: 20px;
+  padding: 10px 50px !important;
   display: block;
   text-align: center;
 }
@@ -175,10 +184,45 @@ main {
   display: none;
   position: absolute;
   bottom: 0;
-  background-color: #121214;
+  background-color: var(--bg-btn);
   height: 90px;
   width: 100%;
-  border-top: 2px solid #2e2e2e;
+  border-top: 2px solid var(--border-btn);
+  max-width: 420px;
+}
+
+.c-icones-footer {
+  display: flex;
+  flex-direction: column;
+}
+
+.c-icones-footer i {
+  font-size: 23px;
+}
+
+.c-icon {
+  width: 100%;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 25px;
+  align-items: center;
+}
+
+.c-icon__ {
+  width: 1px;
+}
+
+.c-icon__active:hover i,
+.c-icon__active:hover p {
+  color: white;
+}
+
+/* Quando clicado (classe .active), os ícones e o texto ficam brancos */
+.c-icon__active.active i,
+.c-icon__active.active p {
+  color: white;
 }
 
 .footerDesktop {
@@ -211,10 +255,6 @@ main {
     margin: 0 auto;
   }
 
-  .desktop-app {
-    display: none;
-  }
-
   .sidebar {
     display: none;
   }
@@ -227,12 +267,4 @@ main {
     display: flex;
   }
 
-  main {
-    border-bottom: 0px solid #2e2e2e;
-    border-left: 0px solid #2e2e2e;
-    position: fixed;
-  }
-}
-
-@media screen and (max-width: 1000px) {
 }
