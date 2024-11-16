@@ -1,10 +1,52 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="text-red-500">Hello tailwind</h1>
-    <form asp-controller="Account" asp-action="Logout" method="post">
-        <button type="submit">Logout</button>
-    </form>
+<div id="borda-linguagem" class="p-4 text-white borda-laranja">
+    <button onclick="selecionaLinguagem('html')">Html</button>
+    <button onclick="selecionaLinguagem('css')">Css</button>
+    <button onclick="selecionaLinguagem('javascript')">Javascript</button>
+    |
+    <button onclick="selecionaNivel('1')">Facil</button>
+    <button onclick="selecionaNivel('2')">Medio</button>
+    <button onclick="selecionaNivel('3')">Avançado</button>
+    |
+    <button onclick="iniciarQuiz()">Iniciar</button>
 </div>
+
+<script>
+    let linguagemSelecionada = 'html';
+    let nivelSelecionado = '1';
+
+    function selecionaLinguagem(linguagem) {
+        linguagemSelecionada = linguagem;
+        const borda = document.querySelector('#borda-linguagem');
+        console.log("linguagem:", linguagemSelecionada);
+        // Remove classes de borda anteriores
+        borda.classList.remove('borda-laranja', 'borda-azul', 'borda-amarela');
+
+        // Adiciona a nova classe de borda com base na linguagem selecionada
+        switch (linguagem) {
+            case 'html':
+                borda.classList.add('borda-laranja');
+                break;
+            case 'css':
+                borda.classList.add('borda-azul');
+                break;
+            case 'javascript':
+                borda.classList.add('borda-amarela');
+                break;
+            default:
+                break;
+        }
+    }
+    
+    function selecionaNivel(nivel) {
+        nivelSelecionado = nivel;
+    }
+    
+    function iniciarQuiz(){
+        let query = `?lang=${encodeURIComponent(linguagemSelecionada)}&nivel=${encodeURIComponent(nivelSelecionado)}`
+        window.location.href = '@Url.Action("Index", "Quiz")' + query;   
+    }
+</script>
