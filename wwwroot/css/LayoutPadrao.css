@@ -139,11 +139,11 @@ main {
   margin: 20px 0;
 }
 
-.sidebar li .btn-sidebar {
+div.sidebar li .btn-sidebar {
   text-decoration: none;
   color: #2e2e2e;
-  font-size: 18px;
-  padding: 10px 50px;
+  font-size: 20px;
+  padding: 10px 50px !important;
   display: block;
   text-align: center;
 }
