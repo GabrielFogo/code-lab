@@ -18,6 +18,11 @@ public class QuizController : Controller
     public async Task<IActionResult> Index([FromQuery] string nivel = "1", string lang = "html", int page = 1)
     {
         var pergunta = await _perguntaRepository.GetPaginatedAsync(lang, nivel, page, 1);
+        if (pergunta.Count <= 0)
+        {
+            return View("QuizConcluido");
+        }
+        
         var viewModel = new QuizViewModel()
         {
             Pergunta = pergunta[0]
