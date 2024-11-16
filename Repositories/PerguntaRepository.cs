@@ -23,6 +23,26 @@ public class PerguntasRepository : IPerguntaRepository
         return await _perguntasCollection.Find(filter).ToListAsync();
     }
 
+    public async Task<List<Pergunta>> GetPaginatedAsync(string linguagem, string nivel, int page, int pageSize)
+    {
+        var langFilter = Builders<Pergunta>.Filter.Eq(p => p.Linguagem, linguagem);
+        var nivelFilter = Builders<Pergunta>.Filter.Eq(p => p.Nivel, nivel);
+        var filter = Builders<Pergunta>.Filter.And(langFilter, nivelFilter);
+        
+        int skip = (page - 1) * pageSize;
+        
+        return await _perguntasCollection.Find(filter)
+            .Skip(skip)
+            .Limit(pageSize)
+            .ToListAsync();
+    }
+    
+    public async Task<List<Pergunta>> GetFiltredByLangAsync(string linguagem)
+    {
+        var filter = Builders<Pergunta>.Filter.Eq(p => p.Linguagem, linguagem);
+        return await _perguntasCollection.Find(filter).ToListAsync();
+    }
+
     // Método para obter uma pergunta pelo ID
     public async Task<Pergunta> GetPerguntaByIdAsync(string id)
     {
