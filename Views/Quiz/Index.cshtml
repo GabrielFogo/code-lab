@@ -7,9 +7,10 @@
 <div class="flex flex-column">
     <h2 class="text-white">@Model.PerguntaDescricao</h2>
     <form class="flex flex-column gap-2" asp-action="Responder" asp-controller="Quiz">
-        <input type="hidden" name="page" value="@ViewData["Page"]" />
-        <input type="hidden" name="lang" value="@ViewData["Lang"]" />
-        <input type="hidden" name="nivel" value="@ViewData["Nivel"]" />
+        <div asp-validation-summary="All" class="text-red-500 text-xs"></div>
+        <input type="hidden" name="page" value="@ViewData["Page"]"/>
+        <input type="hidden" name="lang" value="@ViewData["Lang"]"/>
+        <input type="hidden" name="nivel" value="@ViewData["Nivel"]"/>
         <input type="hidden" value="@Model.QuizId" asp-for="QuizId"/>
         @foreach (var alternativa in @Model.Alternativas!)
         {

@@ -66,7 +66,7 @@ public class PerguntasRepository : IPerguntaRepository
             .Set(p => p.Nivel, perguntaAtualizada.Nivel)
             .Set(p => p.AlternativaCorreta, perguntaAtualizada.AlternativaCorreta);
         // Atualizando as alternativas
-        for (int i = 0; i < perguntaAtualizada.Alternativas.Count; i++)
+        for (int i = 0; i < perguntaAtualizada.Alternativas.Count - 1; i++)
         {
             update = update.Set(p => p.Alternativas[i], perguntaAtualizada.Alternativas[i]);
         }
