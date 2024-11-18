@@ -66,7 +66,7 @@ namespace CodeLab.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Linguagem,Nivel,Descricao,Alternativa1,Alternativa2,Alternativa3,Alternativa4,AlternativaCorreta")] PerguntaViewModel model)
+        public async Task<IActionResult> Edit(string id, [Bind("Linguagem,Nivel,Descricao,Alternativa1,Alternativa2,Alternativa3,AlternativaCorreta")] PerguntaViewModel model)
         {
             if (!ModelState.IsValid)
                 return View(model);

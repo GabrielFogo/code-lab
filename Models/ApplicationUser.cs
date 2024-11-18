@@ -10,7 +10,10 @@ namespace CodeLab.Models
         public decimal XpGanho { get; set; } = 0;
 
         [BsonRepresentation(BsonType.Decimal128)]
-        public decimal XpNescessario { get; set; } = 0;
+        public decimal XpNescessario { get; set; } = 1000;
+
+        [BsonRepresentation(BsonType.Int64)]
+        public int NivelXp { get; set; } = 1;
 
         public int Dinheiro { get; set; } = 0;
     }

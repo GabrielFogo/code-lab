@@ -73,7 +73,7 @@ public class AccountController : Controller
             if (result.Succeeded)
             {
                 if(model.Username != _adminService.GetAdminEmail())
-                 return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Home");
                 return RedirectToAction("Index", "Admin");
             }
 

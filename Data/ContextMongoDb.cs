@@ -42,5 +42,6 @@ namespace CodeLab.Data
         }
 
         public IMongoCollection<Pergunta> Perguntas => _database.GetCollection<Pergunta>("Perguntas");
+        public IMongoCollection<Quiz> Quizzes => _database.GetCollection<Quiz>("Quizzes");
     }
 }
