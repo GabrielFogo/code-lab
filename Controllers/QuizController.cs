@@ -4,8 +4,8 @@ using CodeLab.Models;
 using CodeLab.Repositories;
 using CodeLab.Services;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace CodeLab.Controllers;
 
@@ -14,11 +14,13 @@ public class QuizController : Controller
 {
     private readonly IPerguntaRepository _perguntaRepository;
     private readonly IQuizRepository _quizRepository;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public QuizController(IPerguntaRepository perguntaRepository, IQuizRepository quizRepository)
+    public QuizController(IPerguntaRepository perguntaRepository, IQuizRepository quizRepository, UserManager<ApplicationUser> userManager)
     {
         _perguntaRepository = perguntaRepository;
         _quizRepository = quizRepository;
+        _userManager = userManager;
     }
 
     public async Task<IActionResult> Index([FromQuery] string nivel = "1", string lang = "html", int page = 1, string quizId = "")
@@ -27,7 +29,8 @@ public class QuizController : Controller
 
         if (pergunta.Count <= 0)
         {
-            return View("QuizConcluido");
+            var quiz = await _quizRepository.GetQuizsAsync(quizId);
+            return View("QuizConcluido", quiz);
         }
 
         if (string.IsNullOrEmpty(quizId)) {
@@ -74,6 +77,22 @@ public class QuizController : Controller
         else
         {
             quiz.PerguntasAcertadas.Add(pergunta.Id);
+            quiz.XpGanho += 200;
+
+            var user = await _userManager.FindByIdAsync(quiz.UserId);
+
+            user.Dinheiro += 1;
+            user.XpGanho += 200;
+
+            if(user.XpGanho >= user.XpNescessario)
+            {
+                user.XpGanho = 0;
+                user.NivelXp += 1;
+                user.XpNescessario *= user.NivelXp;
+            }
+
+            await _userManager.UpdateAsync(user);
+            
         }
         
         await _quizRepository.UpdateAsync(quizId, quiz);

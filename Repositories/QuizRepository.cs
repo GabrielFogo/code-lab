@@ -31,7 +31,8 @@ namespace CodeLab.Repositories
             var filter = Builders<Quiz>.Filter.Eq(p => p.Id, id);
             var update = Builders<Quiz>.Update
                 .Set(p => p.PerguntasAcertadas, quiz.PerguntasAcertadas)
-                .Set(p => p.PerguntasErradas, quiz.PerguntasErradas);
+                .Set(p => p.PerguntasErradas, quiz.PerguntasErradas)
+                .Set(p => p.XpGanho, quiz.XpGanho);
            
             await _quizCollection.UpdateOneAsync(filter, update);
         }

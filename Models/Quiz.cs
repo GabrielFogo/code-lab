@@ -14,6 +14,8 @@ namespace CodeLab.Models
         public List<string> PerguntasAcertadas { get; set; } = new List<string>();
         public List<string> PerguntasErradas { get; set; } = new List<string>();
 
+        [BsonRepresentation(BsonType.Decimal128)]
+        public decimal XpGanho { get; set; }
         public int NumeroDeAcertos => PerguntasAcertadas.Count;
         public int NumeroDeErros => PerguntasErradas.Count;
 

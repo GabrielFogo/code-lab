@@ -43,7 +43,6 @@ public class PerguntasRepository : IPerguntaRepository
         return await _perguntasCollection.Find(filter).ToListAsync();
     }
 
-    // Método para obter uma pergunta pelo ID
     public async Task<Pergunta> GetPerguntaByIdAsync(string id)
     {
         var filter = Builders<Pergunta>.Filter.Eq(p => p.Id, id);
