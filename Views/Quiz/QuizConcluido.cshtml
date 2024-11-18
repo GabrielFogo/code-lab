@@ -1,0 +1,12 @@
+﻿@model Quiz
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>Quiz concluido</h2>
+<ul>
+    <li>Acertos: @Model.NumeroDeAcertos</li>
+    <li>Errados: @Model.NumeroDeErros </li>
+    <li>Xp: @Model.XpGanho </li>
+</ul>

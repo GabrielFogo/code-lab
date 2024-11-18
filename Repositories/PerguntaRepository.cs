@@ -23,7 +23,26 @@ public class PerguntasRepository : IPerguntaRepository
         return await _perguntasCollection.Find(filter).ToListAsync();
     }
 
-    // Método para obter uma pergunta pelo ID
+    public async Task<List<Pergunta>> GetPaginatedAsync(string linguagem, string nivel, int page, int pageSize)
+    {
+        var langFilter = Builders<Pergunta>.Filter.Eq(p => p.Linguagem, linguagem);
+        var nivelFilter = Builders<Pergunta>.Filter.Eq(p => p.Nivel, nivel);
+        var filter = Builders<Pergunta>.Filter.And(langFilter, nivelFilter);
+        
+        int skip = (page - 1) * pageSize;
+        
+        return await _perguntasCollection.Find(filter)
+            .Skip(skip)
+            .Limit(pageSize)
+            .ToListAsync();
+    }
+    
+    public async Task<List<Pergunta>> GetFiltredByLangAsync(string linguagem)
+    {
+        var filter = Builders<Pergunta>.Filter.Eq(p => p.Linguagem, linguagem);
+        return await _perguntasCollection.Find(filter).ToListAsync();
+    }
+
     public async Task<Pergunta> GetPerguntaByIdAsync(string id)
     {
         var filter = Builders<Pergunta>.Filter.Eq(p => p.Id, id);
@@ -46,7 +65,7 @@ public class PerguntasRepository : IPerguntaRepository
             .Set(p => p.Nivel, perguntaAtualizada.Nivel)
             .Set(p => p.AlternativaCorreta, perguntaAtualizada.AlternativaCorreta);
         // Atualizando as alternativas
-        for (int i = 0; i < perguntaAtualizada.Alternativas.Count; i++)
+        for (int i = 0; i < perguntaAtualizada.Alternativas.Count - 1; i++)
         {
             update = update.Set(p => p.Alternativas[i], perguntaAtualizada.Alternativas[i]);
         }

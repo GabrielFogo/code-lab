@@ -1,0 +1,289 @@
+@import url(criarPergunta.css);
+@import url(root.css);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Kanit", sans-serif;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  background-color: #0e0e0e;
+  overflow-x: hidden;
+}
+
+#appLayoutPadrao {
+  width: 100%;
+  margin: 0;
+}
+
+.desktop-app {
+  width: 100%;
+}
+
+/* -- Header Mobile -- */
+
+.headerMobile {
+  z-index: 999;
+  display: none;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 75px;
+  background-color: #121214;
+  border-bottom: 2px solid #2e2e2e;
+  padding: 0 25px;
+}
+
+.img-perfil {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+}
+
+.perfil {
+  background-color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+}
+
+.headerMobile nav {
+  width: 100vw;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.user-info img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.user-cash {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.user-cash img {
+  width: 24px;
+  height: 24px;
+}
+
+.text-green {
+  color: #38a169;
+}
+
+/* -- Main -- */
+
+main {
+  border-bottom: 2px solid #2e2e2e;
+  width: calc(100% - 250px);
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.mainLayout {
+  min-height: 95.9vh;
+  background-color: #121214;
+}
+
+.container-main {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+/* -- Side Bar -- */
+.sidebar {
+  display: flex;
+  padding: 60px 0;
+  width: 250px;
+  height: 96%;
+  background-color: #121213;
+  padding-top: 20px;
+  position: fixed;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border-right: 2px solid #2e2e2e;
+}
+
+.sidebar h2 {
+  color: #2e2e2e;
+  text-align: center;
+}
+
+.sidebar ul {
+  list-style-type: none;
+}
+
+.sidebar ul li {
+  margin: 20px 0;
+}
+
+div.sidebar li .btn-sidebar {
+  text-decoration: none;
+  color: #2e2e2e;
+  font-size: 20px;
+  padding: 10px 50px !important;
+  display: block;
+  text-align: center;
+}
+
+.sidebar i {
+  gap: 10px;
+  height: 50px;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+}
+
+.sidebar .bx-log-out {
+  width: 82.2px;
+}
+
+.sidebar li .btn-sidebar:hover,
+.sidebar li .btn-sidebar:hover i,
+.sidebar li .btn-sidebar:hover span {
+  background-color: #16495a;
+  color: white;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.cor-logo {
+  color: #2f9cc0;
+}
+
+.no-decoration {
+  font-size: 2.1rem;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.branco-active {
+  color: #ffffff;
+}
+
+/* -- Footer's -- */
+
+.footerMobile {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  background-color: var(--bg-btn);
+  height: 90px;
+  width: 100%;
+  border-top: 2px solid var(--border-btn);
+  max-width: 420px;
+}
+
+.c-icones-footer {
+  display: flex;
+  flex-direction: column;
+}
+
+.c-icones-footer i {
+  font-size: 23px;
+}
+
+.c-icon {
+  width: 100%;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 25px;
+  align-items: center;
+}
+
+.c-icon__ {
+  width: 1px;
+}
+
+.c-icon__active:hover i,
+.c-icon__active:hover p {
+  color: white;
+}
+
+/* Quando clicado (classe .active), os ícones e o texto ficam brancos */
+.c-icon__active.active i,
+.c-icon__active.active p {
+  color: white;
+}
+
+.footerDesktop {
+  width: 100%;
+  background-color: #121213;
+  text-align: center;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+.footerDesktop p {
+  font-size: 0.8rem;
+  color: #2e2e2e;
+}
+
+/* -- Responsividade -- */
+
+@media screen and (max-width: 600px) {
+  .footerMobile {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  #appLayoutPadrao {
+    display: block;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .desktop-app {
+    display: none;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .footerDesktop {
+    display: none;
+  }
+
+  .headerMobile {
+    display: flex;
+  }
+
+  main {
+    border-bottom: 0px solid #2e2e2e;
+    border-left: 0px solid #2e2e2e;
+    position: fixed;
+    width: 100%;
+    height: 90vh;
+  }
+}

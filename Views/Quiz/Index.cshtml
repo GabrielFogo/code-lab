@@ -1,0 +1,28 @@
+﻿@model QuizViewModel;
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<div class="flex flex-column">
+    <h2 class="text-white">@Model.PerguntaDescricao</h2>
+    <form class="flex flex-column gap-2" asp-action="Responder" asp-controller="Quiz">
+        <div asp-validation-summary="All" class="text-red-500 text-xs"></div>
+        <input type="hidden" name="page" value="@ViewData["Page"]"/>
+        <input type="hidden" name="lang" value="@ViewData["Lang"]"/>
+        <input type="hidden" name="nivel" value="@ViewData["Nivel"]"/>
+        <input type="hidden" value="@Model.QuizId" asp-for="QuizId"/>
+        @if (Model.Alternativas != null)
+        {
+            @foreach (var alternativa in Model.Alternativas)
+            {
+                <div>
+                    <input type="radio" value="@alternativa.LetrasAlternativa" asp-for="@Model.AlternativaSeleciona" />
+                    <label>@alternativa.Description</label>
+                </div>
+            }
+        }
+        <button type="submit">Responder</button>
+    </form>
+</div>
+
