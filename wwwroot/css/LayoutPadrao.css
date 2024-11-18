@@ -266,3 +266,15 @@ div.sidebar li .btn-sidebar {
     display: flex;
   }
 }
+
+@media screen and (min-width: 1000px) {
+  main {
+    display: flex;
+    width: calc(100% - 240px);
+  }
+  .container-app {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
