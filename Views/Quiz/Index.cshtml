@@ -12,12 +12,15 @@
         <input type="hidden" name="lang" value="@ViewData["Lang"]"/>
         <input type="hidden" name="nivel" value="@ViewData["Nivel"]"/>
         <input type="hidden" value="@Model.QuizId" asp-for="QuizId"/>
-        @foreach (var alternativa in @Model.Alternativas!)
+        @if (Model.Alternativas != null)
         {
-            <div>
-                <input type="radio" value="@alternativa.LetrasAlternativa" asp-for="@Model.AlternativaSeleciona"/>
-                <label>@alternativa.Description</label>
-            </div>
+            @foreach (var alternativa in Model.Alternativas)
+            {
+                <div>
+                    <input type="radio" value="@alternativa.LetrasAlternativa" asp-for="@Model.AlternativaSeleciona" />
+                    <label>@alternativa.Description</label>
+                </div>
+            }
         }
         <button type="submit">Responder</button>
     </form>
