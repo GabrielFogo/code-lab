@@ -91,7 +91,6 @@ body {
 }
 
 /* -- Main -- */
-
 .mainLayout {
   min-height: 95.9vh;
   background-color: #121214;
@@ -266,5 +265,4 @@ div.sidebar li .btn-sidebar {
   .headerMobile {
     display: flex;
   }
-
 }

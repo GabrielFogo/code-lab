@@ -265,3 +265,15 @@ span {
     width: 80%; /* Altere para o valor desejado */
     margin: 0 auto; /* Centraliza o footer */
 }
+
+.borda-laranja {
+    border: 1px solid  #FF7A00;
+}
+
+.borda-amarela {
+    border: 1px solid  #FFE500;
+}
+
+.borda-azul {
+    border: 1px solid  #0018EC;
+}
