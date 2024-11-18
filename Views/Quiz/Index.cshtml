@@ -3,9 +3,11 @@
     ViewBag.Title = "title";
     Layout = "_Layout";
 }
-<div class="flex flex-column">
-    <h2 class="text-white">@Model.PerguntaDescricao</h2>
-    <form class="flex flex-column gap-2" asp-action="Responder" asp-controller="Quiz">
+<div class="container-quiz">
+    <form class="radio-form" asp-action="Responder" asp-controller="Quiz">
+        <textarea id="info-box" rows="6" cols="50" readonly>
+            @Model.PerguntaDescricao
+        </textarea>
         <div asp-validation-summary="All" class="text-red-500 text-xs"></div>
         <input type="hidden" name="page" value="@ViewData["Page"]"/>
         <input type="hidden" name="lang" value="@ViewData["Lang"]"/>
@@ -15,13 +17,13 @@
         {
             @foreach (var alternativa in Model.Alternativas)
             {
-                <div>
-                    <input type="radio" value="@alternativa.LetrasAlternativa" asp-for="@Model.AlternativaSeleciona" />
-                    <label>@alternativa.Description</label>
-                </div>
+                    <label class="radio-button">
+                        <input type="radio" value="@alternativa.LetrasAlternativa" asp-for="@Model.AlternativaSeleciona" />
+                    <span>@alternativa.Description</span>
+                    </label>
             }
         }
-        <button type="submit">Responder</button>
+        <button type="submit" class="buttonEnviarQuiz" id="submitButton">Responder</button>
     </form>
 </div>
 
