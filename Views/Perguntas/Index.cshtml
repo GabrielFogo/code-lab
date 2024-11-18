@@ -4,41 +4,48 @@
     Layout = "_Layout";
 }
 
-<div class="mx-1 p-4">
-    <h1 class="text-2xl font-bold">Lista de Perguntas</h1>
-    
-    <div class="mb-4">
-        <h2 class="text-lg">Filtrar por Linguagem</h2>
-        <div class="flex space-x-4">
-            <button onclick="filterByLinguagem('html')" class="bg-blue-500 text-white px-4 py-2 rounded">HTML</button>
-            <button onclick="filterByLinguagem('csharp')" class="bg-blue-500 text-white px-4 py-2 rounded">C#</button>
-            <button onclick="filterByLinguagem('php')" class="bg-blue-500 text-white px-4 py-2 rounded">PHP</button>
-            <button onclick="filterByLinguagem('javascript')" class="bg-blue-500 text-white px-4 py-2 rounded">JavaScript</button>
-            <button onclick="filterByLinguagem('sql')" class="bg-blue-500 text-white px-4 py-2 rounded">SQL</button>
+<head>
+    <link href="~/css/TelaEditarPergunta.css" rel="stylesheet" />
+</head>
+
+<div class="filter-conteiner">
+    <h1 class="title">Lista de Perguntas</h1>
+
+    <div class="filter_languages">
+        <h2 class="title-languages">Filtrar por Linguagem</h2>
+        <div class="container-teste">
+            <div class="filter-languages">
+                <button onclick="filterByLinguagem('html')" class="tab">HTML</button>
+                <button onclick="filterByLinguagem('csharp')" class="tab">C#</button>
+                <button onclick="filterByLinguagem('php')" class="tab">PHP</button>
+                <button onclick="filterByLinguagem('javascript')" class="tab">JavaScript</button>
+                <button onclick="filterByLinguagem('sql')" class="tab">SQL</button>
+                <button onclick="filterByLinguagem('css')" class="tab">CSS</button>
+            </div>
         </div>
     </div>
 
-    <div class="mb-4">
-        <h2 class="text-lg">Filtrar por Nível</h2>
-        <div class="flex space-x-4">
-            <button onclick="filterByNivel('1')" class="bg-blue-500 text-white px-4 py-2 rounded">Básico</button>
-            <button onclick="filterByNivel('2')" class="bg-blue-500 text-white px-4 py-2 rounded">Normal</button>
-            <button onclick="filterByNivel('3')" class="bg-blue-500 text-white px-4 py-2 rounded">Avançado</button>
+    <div class="filter_levels">
+        <h2 class="title-levels">Filtrar por Nível</h2>
+        <div class="filter-levels">
+            <button onclick="filterByNivel('1')" class="buttons-levels">Básico</button>
+            <button onclick="filterByNivel('2')" class="buttons-levels">Normal</button>
+            <button onclick="filterByNivel('3')" class="buttons-levels">Avançado</button>
         </div>
     </div>
-    
+
     @if (Model != null && Model.Count > 0)
     {
         @foreach (var pergunta in Model)
         {
-            <div class="text-white flex items-center justify-between bg-gray-800 p-2 rounded shadow border border-gray-700">
+            <div class="quest-list">
                 @pergunta.Description
                 <div>
                     <button type="button" onclick="showDeleteModal('@pergunta.Id')">
-                        <i class="bx bxs-trash text-xl"></i>
+                        <i class="bx bxs-trash icon-trash"></i>
                     </button>
                     <a asp-controller="Perguntas" asp-action="Edit" asp-route-id="@pergunta.Id">
-                        <i class='bx bxs-edit-alt text-xl'></i>
+                        <i class='bx bxs-edit icon-edit'></i>
                     </a>
                 </div>
             </div>
@@ -46,7 +53,7 @@
     }
     else
     {
-        <p class="text-gray-500">Nenhuma pergunta encontrada.</p>
+        <p class="no-question">Nenhuma pergunta encontrada.</p>
     }
 </div>
 
