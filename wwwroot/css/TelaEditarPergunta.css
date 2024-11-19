@@ -142,3 +142,102 @@
         justify-content:center;
     }
 }
+
+/* -- Botão Modal --*/
+/* From Uiverse.io by vinodjangid07 */
+.card {
+    width: 320px;
+    height: fit-content;
+    background: #121214;
+    border-radius: 10px;
+    border:1px solid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    position: relative;
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.068);
+}
+
+.card-content {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.card-heading {
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.card-description {
+    font-weight: 400;
+    color: #fff;
+    font-size:1rem;
+}
+
+.card-button-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.card-button {
+    width: 50%;
+    height: 40px;
+    border-radius: 7px;
+    border: none;
+    cursor: pointer;
+    font-weight: 300;
+}
+
+.primary {
+    background-color: #121214;
+    color: #2e2e2e;
+    box-shadow: inset 0px 0px 10px 10px rgba(0, 0, 0, 0.25),0px 7px 5px 2px rgba(0, 0, 0, 0.5);
+    border: 1px solid #2e2e2e;
+}
+
+    .primary:hover {
+        background-color: rgb(255, 73, 66);
+        color: #ffff
+    }
+
+.secondary {
+    background-color: #121214;
+    box-shadow: inset 0px 0px 10px 10px rgba(0, 0, 0, 0.25),0px 7px 5px 2px rgba(0, 0, 0, 0.5);
+    border: 1px solid #2f9cc0;
+    color: white;
+}
+
+    .secondary:hover {
+        background: linear-gradient(90deg, #348CAA 0%, #38CBFB 100%);
+    }
+
+.exit-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+    .exit-button:hover svg {
+        fill: black;
+    }
+
+    .exit-button svg {
+        fill: rgb(175, 175, 175);
+    }
+

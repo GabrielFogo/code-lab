@@ -56,17 +56,26 @@
 
 <!-- Modal de Confirmação de Exclusão -->
 <div id="deleteModal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center hidden">
-    <div class="bg-gray-700 py-6 px-4 rounded-lg shadow-lg text-center w-80">
-        <h2 class="text-xl font-bold mb-4 text-white">Excluir</h2>
-        <p class="text-white mb-6">Deseja excluir essa questão?</p>
-        <div class="flex justify-center space-x-4">
-            <button onclick="hideDeleteModal()" class="px-6 py-2 border border-cyan-100 text-white rounded">Não</button>
-            <button onclick="confirmDelete()" class="px-6 py-2 border border-cyan-100 text-white rounded">Sim</button>
+    <div class="card">
+        <div class="card-content">
+            <p class="card-heading">Excluir</p>
+            <p class="card-description">Tem certeza que vai Excluir</p>
         </div>
-        <form id="deleteForm" method="post" asp-action="Delete" asp-controller="Perguntas">
+        <div class="card-button-wrapper">
+            <button onclick="hideDeleteModal()" class="card-button secondary">Cancelar</button>
+            <button onclick="confirmDelete()" class="card-button primary">Excluir</button>
+        </div>
+        <button onclick="hideDeleteModal()" class="exit-button">
+            <svg height="20px" viewBox="0 0 384 512">
+                <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"></path>
+            </svg>
+        </button>
+        <form id="deleteForm" method="post" asp-action="Delete" asp-
+              controller="Perguntas">
             <input type="hidden" name="id" id="deleteId" />
         </form>
     </div>
+
 </div>
 
 <script>
