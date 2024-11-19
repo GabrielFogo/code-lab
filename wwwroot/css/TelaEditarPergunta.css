@@ -9,7 +9,6 @@
     top: 0;
     background: #121214;
     border-bottom: 2px solid #656565;
-    height: 130px;
     margin-bottom: 1.5rem;
 }
 
@@ -133,6 +132,8 @@
     color: #595959; /* Cor cinza que é equivalente ao 'text-gray-500' no Tailwind */
     display: flex;
     justify-content: center;
+    font-weight: bold; /* Deixa o texto em negrito */
+    font-size: 50px;
 }
 
 @media screen and (max-width: 600px) {
