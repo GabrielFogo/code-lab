@@ -16,21 +16,18 @@
         <div class="container-teste">
             <div class="filter-languages">
                 <button onclick="filterByLinguagem('html')" class="tab">HTML</button>
-                <button onclick="filterByLinguagem('csharp')" class="tab">C#</button>
-                <button onclick="filterByLinguagem('php')" class="tab">PHP</button>
+                <button onclick="filterByLinguagem('css')" class="tab">Css</button>
                 <button onclick="filterByLinguagem('javascript')" class="tab">JavaScript</button>
-                <button onclick="filterByLinguagem('sql')" class="tab">SQL</button>
-                <button onclick="filterByLinguagem('css')" class="tab">CSS</button>
             </div>
         </div>
     </div>
 
-    <div class="filter_levels">
-        <h2 class="title-levels">Filtrar por Nível</h2>
-        <div class="filter-levels">
-            <button onclick="filterByNivel('1')" class="buttons-levels">Básico</button>
-            <button onclick="filterByNivel('2')" class="buttons-levels">Normal</button>
-            <button onclick="filterByNivel('3')" class="buttons-levels">Avançado</button>
+        <div class="filter_levels">
+            <div class="filter-levels">
+                <button onclick="filterByNivel('1')" class="buttons-levels">Básico</button>
+                <button onclick="filterByNivel('2')" class="buttons-levels">Normal</button>
+                <button onclick="filterByNivel('3')" class="buttons-levels">Avançado</button>
+            </div>
         </div>
     </div>
 
@@ -39,8 +36,10 @@
         @foreach (var pergunta in Model)
         {
             <div class="quest-list">
-                @pergunta.Description
-                <div>
+                <div class="pedrao">
+                    @pergunta.Description
+                </div>
+                <div class="btn-alt">
                     <button type="button" onclick="showDeleteModal('@pergunta.Id')">
                         <i class="bx bxs-trash icon-trash"></i>
                     </button>
@@ -53,7 +52,7 @@
     }
     else
     {
-        <p class="no-question">Nenhuma pergunta encontrada.</p>
+        <p class="no-question">VAZIO</p>
     }
 </div>
 
