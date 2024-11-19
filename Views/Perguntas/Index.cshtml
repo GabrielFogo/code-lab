@@ -7,56 +7,56 @@
 <head>
     <link href="~/css/TelaEditarPergunta.css" rel="stylesheet" />
 </head>
+<div class="container-perguntas-filtrar">
+    <div class="filter-conteiner">
 
-<div class="filter-conteiner">
-
-    <div class="filter_languages">
-        <div class="container-teste">
-            <div class="filter-languages">
-                <button onclick="filterByLinguagem('html')" class="tab">HTML</button>
-                <button onclick="filterByLinguagem('css')" class="tab">Css</button>
-                <button onclick="filterByLinguagem('javascript')" class="tab">JavaScript</button>
-            </div>
-        </div>
-    </div>
-
-        <div class="filter_levels">
-            <div class="filter-levels">
-                <button onclick="filterByNivel('1')" class="buttons-levels">Básico</button>
-                <button onclick="filterByNivel('2')" class="buttons-levels">Normal</button>
-                <button onclick="filterByNivel('3')" class="buttons-levels">Avançado</button>
+        <div class="filter_languages">
+            <div class="container-teste">
+                <div class="filter-languages">
+                    <button onclick="filterByLinguagem('html')" class="tab">HTML</button>
+                    <button onclick="filterByLinguagem('css')" class="tab">Css</button>
+                    <button onclick="filterByLinguagem('javascript')" class="tab">JavaScript</button>
+                </div>
             </div>
         </div>
 
-        <div class="teste">
-        </div>
-    </div>
+            <div class="filter_levels">
+                <div class="filter-levels">
+                    <button onclick="filterByNivel('1')" class="buttons-levels">Básico</button>
+                    <button onclick="filterByNivel('2')" class="buttons-levels">Normal</button>
+                    <button onclick="filterByNivel('3')" class="buttons-levels">Avançado</button>
+                </div>
+            </div>
 
-    @if (Model != null && Model.Count > 0)
-    {
-        @foreach (var pergunta in Model)
+            <div class="teste">
+            </div>
+
+        @if (Model != null && Model.Count > 0)
         {
-            <div class="quest-list">
-                <div class="pedrao">
-                    @pergunta.Description
+            @foreach (var pergunta in Model)
+            {
+                <div class="quest-list">
+                    <div class="pedrao">
+                        @pergunta.Description
+                    </div>
+                    <div class="btn-alt">
+                        <button type="button" onclick="showDeleteModal('@pergunta.Id')">
+                            <i class="bx bxs-trash icon-trash"></i>
+                        </button>
+                        <a asp-controller="Perguntas" asp-action="Edit" asp-route-id="@pergunta.Id">
+                            <i class='bx bxs-edit icon-edit'></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="btn-alt">
-                    <button type="button" onclick="showDeleteModal('@pergunta.Id')">
-                        <i class="bx bxs-trash icon-trash"></i>
-                    </button>
-                    <a asp-controller="Perguntas" asp-action="Edit" asp-route-id="@pergunta.Id">
-                        <i class='bx bxs-edit icon-edit'></i>
-                    </a>
-                </div>
-            </div>
+            
+            }
         }
-    }
-    else
-    {
-        <p class="no-question">VAZIO</p>
-    }
+        else
+        {
+            <p class="no-question">VAZIO</p>
+        }
+    </div>
 </div>
-
 <!-- Modal de Confirmação de Exclusão -->
 <div id="deleteModal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center hidden">
     <div class="card">
