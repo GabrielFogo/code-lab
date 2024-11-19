@@ -155,10 +155,12 @@ form {
     /* Estilo individual para cada tipo de recompensa */
     .reward-card.dinheiro {
         background: linear-gradient(75deg, #FFCD50 0%, #F4971E 100%);
+        box-shadow: 0px 5px 3.5px 0px rgba(0, 0, 0, 1);
     }
 
     .reward-card.inteligencia {
         background: linear-gradient(88deg, #FF8CA0 0%, #F35474 100%);
+        box-shadow: 0px 5px 3.5px 0px rgba(0, 0, 0, 1);
     }
 
         .reward-card.inteligencia .inside-buttons li {
