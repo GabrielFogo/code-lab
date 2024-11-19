@@ -47,43 +47,43 @@
                 @if (User.IsInRole("Admin"))
             {
                 <ul>
-                        <li>
-                            <a asp-controller="Home" asp-action="Index" 
-                            class="@(ViewContext.RouteData.Values["controller"].ToString() == "Home" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "branco-active btn-sidebar" : "btn-sidebar")">
-                            <i class="bx bx-home"><span>Inicio</span></i>
-                            </a>
-                        </li>
+                    <li>
+                        <a asp-controller="Home" asp-action="Index" 
+                        class="@(ViewContext.RouteData.Values["controller"].ToString() == "Home" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "branco-active btn-sidebar" : "btn-sidebar")">
+                        <i class="bx bx-home"><span>Inicio</span></i>
+                        </a>
+                    </li>
 
-                        <li>
-                            <a asp-controller="Perguntas" asp-action="Create" 
-                            class="@(ViewContext.RouteData.Values["controller"].ToString() == "Perguntas" && ViewContext.RouteData.Values["action"].ToString() == "Create" ? "text-white active btn-sidebar" : "btn-sidebar")">
-                            <i class="bx bx-question-mark"><span>Adicionar</span></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-controller="Perguntas" asp-action="Index" 
-                            class="@(ViewContext.RouteData.Values["controller"].ToString() == "Perguntas" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "text-white active btn-sidebar" : "btn-sidebar")">
-                            <i class="bx bx-edit"><span>Perguntas</span></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-controller="Fotos" asp-action="Index" 
-                            class="@(ViewContext.RouteData.Values["controller"].ToString() == "Fotos" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "text-white active btn-sidebar" : "btn-sidebar")">
-                            <i class="bx bx-image"><span>Avatares</span></i>
-                            </a>
-                        </li>
+                    <li>
+                        <a asp-controller="Perguntas" asp-action="Create" 
+                        class="@(ViewContext.RouteData.Values["controller"].ToString() == "Perguntas" && ViewContext.RouteData.Values["action"].ToString() == "Create" ? "text-white active btn-sidebar" : "btn-sidebar")">
+                        <i class="bx bx-question-mark"><span>Adicionar</span></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="Perguntas" asp-action="Index" 
+                        class="@(ViewContext.RouteData.Values["controller"].ToString() == "Perguntas" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "text-white active btn-sidebar" : "btn-sidebar")">
+                        <i class="bx bx-edit"><span>Perguntas</span></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="Fotos" asp-action="Index" 
+                        class="@(ViewContext.RouteData.Values["controller"].ToString() == "Fotos" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "text-white active btn-sidebar" : "btn-sidebar")">
+                        <i class="bx bx-image"><span>Avatares</span></i>
+                        </a>
+                    </li>
                 </ul>
-                            <div>
-                                <li>
-                                    <form asp-controller="Account" asp-action="Logout" method="post">
-                                        <button type="submit" class="btn-sidebar" style="background: none; border: none; padding: 0; cursor: pointer;">
-                                            <i class="bx bx-log-out">
-                                                <span>Sair</span>
-                                            </i>
-                                        </button>
-                                    </form>
-                                </li>
-                            </div>
+                <div>
+                    <li>
+                        <form asp-controller="Account" asp-action="Logout" method="post">
+                            <button type="submit" class="btn-sidebar" style="background: none; border: none; padding: 0; cursor: pointer;">
+                                <i class="bx bx-log-out">
+                                    <span>Sair</span>
+                                </i>
+                            </button>
+                        </form>
+                    </li>
+                </div>
             }
             else
             {
