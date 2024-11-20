@@ -4,10 +4,10 @@
     Layout = "_Layout";
 }
 <div class="container-concluida">
+    
     <div class="completed-language">
         <div class="check-icon">
-            <!-- Aqui você pode usar um ícone SVG ou uma imagem -->
-            <img src="~/check_icon.png" alt="Ícone de concluído">
+            <a class="bx bx-check"></a>
         </div>
         <div>
         </div>
@@ -46,4 +46,3 @@
     <a href="#link1" class="button-revisao">Revisão</a>
     <a asp-controller="Home" asp-action="Index" class="@(ViewContext.RouteData.Values["controller"].ToString() == "Home" && ViewContext.RouteData.Values["action"].ToString() == "Index" ? "text-white active" : "button-dashboard")">Dashboard</a>
   </div>
-

@@ -26,3 +26,27 @@
         <button type="submit" class="buttonEnviarQuiz" id="submitButton">Responder</button>
     </form>
 </div>
+<script>
+    const radioButtons = document.querySelectorAll('input[type="radio"]');
+    const submitButton = document.getElementById("submitButton");
+
+    function changeButtonColor() {
+      submitButton.style.borderColor = "#3bce07"; 
+      submitButton.style.color = "#3bce07";
+      submitButton.style.boxShadow = "inset 0 0 7px 1px #3bce07"; 
+      submitButton.textContent = "Próximo";
+
+      const tickIcon = document.createElement("i");
+      tickIcon.classList.add("fas", "fa-check");
+      tickIcon.style.marginLeft = "10px"; 
+      submitButton.appendChild(tickIcon); 
+    }
+
+    radioButtons.forEach((radio) => {
+      radio.addEventListener("change", function () {
+        if (this.checked) {
+          changeButtonColor();
+        }
+      });
+    });
+</script>

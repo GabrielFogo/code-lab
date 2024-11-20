@@ -78,30 +78,35 @@ form {
   cursor: pointer;
   text-align: center;
   transition: background-color 0.3s, color 0.3s;
+  box-shadow: 0px 5px 3.5px 0px #000000;
 }
 
 .radio-button span:hover {
-  border-color: #0032e0;
+  border-color: #3bce07;
+  box-shadow: 0px 4px 4px #000000, inset 2px 4px 10px -2px #000000;
 }
 
 .buttonEnviarQuiz {
-    z-index: 999;
-    bottom: 22px;
-    position: absolute;
-    width: 85%;
-    height: 50px;
-    color: #2e2e2e;
-    font-size: 20px;
-    border-radius: 7px;
-    border: 2px solid #2e2e2e;
-    background: #121214;
-    transition: background-color 0.3s ease;
+  z-index: 999;
+  bottom: 22px;
+  position: absolute;
+  width: 87%;
+  height: 50px;
+  color: #2e2e2e;
+  font-size: 20px;
+  border-radius: 7px;
+  border: 2px solid #2e2e2e;
+  background: #121214;
+  transition: background-color 0.3s ease;
 }
 
 /* -- Tela Quiz Concluido -- */
 
-.container-concluida{
+.container-concluida {
     display: flex;
+    background-image: url("../teste.png");
+    background-size: cover;
+    background-repeat: no-repeat;
     height: 100%;
     width: 100%;
     flex-direction: column;
@@ -111,142 +116,168 @@ form {
 
 /* Estilo para a mensagem de linguagem concluída */
 .completed-language {
-    display: flex;
-    text-align: center;
-    margin-bottom: 20px;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  text-align: center;
+  margin-bottom: 20px;
+  flex-direction: column;
+  align-items: center;
 }
 
-.check-icon img {
-    width: 140px;
-    height: 140px;
-    margin-bottom: 10px;
+.completed-language h2 {
+  font-size: 30px;
+}
+
+.check-icon {
+  display: flex;
+  height: 200px;
+  width: 200px;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(75deg, #3bce07 5%, #1a6400 66%);
+  border-radius: 10px;
+  box-shadow: 0px 5px 3.5px 0px #000000;
+  margin-bottom: 10px;
+}
+
+.check-icon a {
+  font-size: 160px;
+  color: #fff;
 }
 
 /* Estilo dos cards de recompensa */
 .rewards {
-    display: flex;
-    gap: 20px; /* Espaço entre os cards */
+  display: flex;
+  gap: 20px; /* Espaço entre os cards */
+  justify-content:center;
 }
 
 .reward-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 150px;
-    height: 100px;
-    border-radius: 10px; /* Cantos arredondados */
-    padding: 10px;
-    color: white;
-    font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 100px;
+  border-radius: 10px; /* Cantos arredondados */
+  padding: 10px;
+  color: white;
+  font-weight: bold;
 }
 
-    .reward-card h3 {
-        margin-bottom: 5px;
-        color: #0e0e0e;
-    }
+.reward-card h3 {
+  margin-bottom: 5px;
+  color: #0e0e0e;
+}
 
-    .reward-card p {
-        font-size: 16px;
-    }
+.reward-card p {
+  font-size: 16px;
+}
+.reward-card.dinheiro {
+  background: linear-gradient(75deg, #ffcd50 0%, #f4971e 100%);
+  box-shadow: 0px 5px 3.5px 0px rgba(0, 0, 0, 1);
+}
 
-    /* Estilo individual para cada tipo de recompensa */
-    .reward-card.dinheiro {
-        background: linear-gradient(75deg, #FFCD50 0%, #F4971E 100%);
-        box-shadow: 0px 5px 3.5px 0px rgba(0, 0, 0, 1);
-    }
+.reward-card.inteligencia {
+  background: linear-gradient(88deg, #ff8ca0 0%, #f35474 100%);
+  box-shadow: 0px 5px 3.5px 0px rgba(0, 0, 0, 1);
+}
 
-    .reward-card.inteligencia {
-        background: linear-gradient(88deg, #FF8CA0 0%, #F35474 100%);
-        box-shadow: 0px 5px 3.5px 0px rgba(0, 0, 0, 1);
-    }
+.reward-card.inteligencia .inside-buttons li {
+  color: #ff8ca0;
+}
 
-        .reward-card.inteligencia .inside-buttons li {
-            color: #FF8CA0;
-        }
+.reward-card.dinheiro .inside-buttons li {
+  color: #ffbe1d;
+}
 
-    .reward-card.dinheiro .inside-buttons li {
-        color: #FFBE1D;
-    }
+.inside-buttons a {
+  color: yellow;
+}
 
-    .inside-buttons a{
-        color:yellow;
-    }
-
-        .inside-buttons {
-            width: 145px;
-            height: 78px;
-            gap: 10px;
-            margin: 0px;
-            background-color: #0e0e0e;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-
+.inside-buttons {
+  width: 145px;
+  height: 78px;
+  gap: 10px;
+  margin: 0px;
+  background-color: #0e0e0e;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 /* Estilo padrão do botão */
 .botoes-sair-quiz {
-    width: 87%;
-    bottom: 15px;
-    background-color: #121214;
-    position: absolute;
-    z-index: 999;
-    display: flex;
-    justify-content: space-between;
+  width: 87%;
+  bottom: 15px;
+  background-color: #121214;
+  position: absolute;
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
 }
 
 .button-revisao {
-    text-decoration: none; /* Remove o sublinhado */
-    padding: 10px 20px; /* Espaçamento interno */
-    width: 150px;
-    height: 62px;
-    background-color: #121214; /* Cor de fundo */
-    border-radius: 7px;
-    border: 2px solid #2e2e2e;
-    color: #2e2e2e; /* Cor do texto */
-    border-radius: 5px; /* Cantos arredondados */
-    font-size: 16px; /* Tamanho da fonte */
-    display: flex; /* Torna o botão um contêiner flexível */
-    justify-content: center; /* Centraliza o texto horizontalmente */
-    align-items: center; /* Centraliza o texto verticalmente */
-    text-align: center; /* Centraliza o texto */
+  text-decoration: none; /* Remove o sublinhado */
+  padding: 10px 20px; /* Espaçamento interno */
+  width: 150px;
+  height: 62px;
+  background-color: #121214; /* Cor de fundo */
+  border-radius: 7px;
+  border: 2px solid #2e2e2e;
+  color: #2e2e2e; /* Cor do texto */
+  border-radius: 5px; /* Cantos arredondados */
+  font-size: 16px; /* Tamanho da fonte */
+  display: flex; /* Torna o botão um contêiner flexível */
+  justify-content: center; /* Centraliza o texto horizontalmente */
+  align-items: center; /* Centraliza o texto verticalmente */
+  text-align: center; /* Centraliza o texto */
 }
 
-    .button-revisao:hover {
-        color: #ffffff;
-        border: 2px solid #ffffff;
-        background-color: #2884a3;
-        box-shadow: inset 0 0 10px black;
-        transition: 0.5s;
-    }
+.button-revisao:hover {
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  background-color: #2884a3;
+  box-shadow: inset 0 0 10px black;
+  transition: 0.5s;
+}
 
 .button-dashboard {
-    text-decoration: none; /* Remove o sublinhado */
-    padding: 10px 20px; /* Espaçamento interno */
-    width: 150px;
-    height: 62px;
-    background-color: #121214; /* Cor de fundo */
-    border-radius: 7px;
-    border: 2px solid #2e2e2e;
-    color: #2e2e2e; /* Cor do texto */
-    border-radius: 5px; /* Cantos arredondados */
-    font-size: 16px; /* Tamanho da fonte */
-    display: flex; /* Torna o botão um contêiner flexível */
-    justify-content: center; /* Centraliza o texto horizontalmente */
-    align-items: center; /* Centraliza o texto verticalmente */
-    text-align: center; /* Centraliza o texto */
+  text-decoration: none; /* Remove o sublinhado */
+  padding: 10px 20px; /* Espaçamento interno */
+  width: 150px;
+  height: 62px;
+  background-color: #121214; /* Cor de fundo */
+  border-radius: 7px;
+  border: 2px solid #2e2e2e;
+  color: #2e2e2e; /* Cor do texto */
+  border-radius: 5px; /* Cantos arredondados */
+  font-size: 16px; /* Tamanho da fonte */
+  display: flex; /* Torna o botão um contêiner flexível */
+  justify-content: center; /* Centraliza o texto horizontalmente */
+  align-items: center; /* Centraliza o texto verticalmente */
+  text-align: center; /* Centraliza o texto */
 }
 
-    .button-dashboard:hover {
-        color: #ffffff;
-        border: 2px solid #ffffff;
-        background-color: #2884a3;
-        box-shadow: inset 0 0 10px black;
-        transition: 0.5s;
-    }
+.button-dashboard:hover {
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  background-color: #2884a3;
+  box-shadow: inset 0 0 10px black;
+  transition: 0.5s;
+}
 
+/* -- Responsividade -- */
+
+@media screen and (min-width: 1000px) {
+  .botoes-sair-quiz {
+    width: 40%;
+    bottom: 85px;
+    position: absolute;
+    background-color: transparent;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+  }
+}
