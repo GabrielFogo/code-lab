@@ -276,5 +276,7 @@ div.sidebar li .btn-sidebar {
     width: 100%;
     display: flex;
     justify-content: center;
+    height:95.9vh !important;
+    border-bottom:2px solid #2e2e2e;
   }
 }
