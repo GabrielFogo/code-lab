@@ -82,16 +82,16 @@ public class QuizController : Controller
         
         if (model.AlternativaSeleciona != pergunta!.AlternativaCorreta)
         {
-            quiz.PerguntasErradas.Add(pergunta.Id);
+            quiz.PerguntasErradas.Add(pergunta.Id!);
         }
         else
         {
-            quiz.PerguntasAcertadas.Add(pergunta.Id);
-            quiz.XpGanho += 200;
+            quiz.PerguntasAcertadas.Add(pergunta.Id!);
+            quiz.XpGanho += 500 * int.Parse(pergunta.Nivel!);
 
-            var user = await _userManager.FindByIdAsync(quiz.UserId);
+            var user = await _userManager.FindByIdAsync(quiz.UserId!);
 
-            user.Dinheiro += 1;
+            user!.Dinheiro += 1;
             user.XpGanho += 200;
 
             if(user.XpGanho >= user.XpNescessario)
