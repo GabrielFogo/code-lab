@@ -23,23 +23,54 @@
                     </label>
             }
         }
-        <button type="submit" class="buttonEnviarQuiz" id="submitButton">Responder</button>
+        @if ((bool)ViewData["Respondida"]!)
+        {
+            <button type="button" class="buttonEnviarQuiz" onclick="proximaPergunta()" id="submitButton">Próximo</button>
+        }
+        else
+        {
+            <button type="submit" class="buttonEnviarQuiz" id="submitButton">Responder</button>
+        }
     </form>
 </div>
 <script>
     const radioButtons = document.querySelectorAll('input[type="radio"]');
     const submitButton = document.getElementById("submitButton");
 
+    document.addEventListener('DOMContentLoaded', () => {
+        const url = new URL(window.location.href);
+        const acertou = url.searchParams.get("correta");
+        const respondida = url.searchParams.get("respondida")
+        let acertouBool = false;
+        let respondidaBool = false;
+        
+        if (acertou && respondida) {
+            try {
+                acertouBool = JSON.parse(acertou.toLowerCase());
+                respondidaBool = JSON.parse(respondida.toLowerCase());
+                
+            } catch (e) {
+                acertouBool = false;
+            }
+        }
+
+        if (acertouBool) {
+            console.log("certo");
+            submitButton.style.borderColor = "#3bce07";
+            submitButton.style.color = "#3bce07";
+            submitButton.style.boxShadow = "inset 0 0 7px 1px #3bce07";
+        } else if(!acertouBool && respondidaBool) {
+            console.log("errado");
+            submitButton.style.borderColor = "#bb0000";
+            submitButton.style.color = "#bb0000";
+            submitButton.style.boxShadow = "inset 0 0 7px 1px #bb0000";
+        }
+    });
+    
     function changeButtonColor() {
       submitButton.style.borderColor = "#3bce07"; 
       submitButton.style.color = "#3bce07";
-      submitButton.style.boxShadow = "inset 0 0 7px 1px #3bce07"; 
-      submitButton.textContent = "Próximo";
-
-      const tickIcon = document.createElement("i");
-      tickIcon.classList.add("fas", "fa-check");
-      tickIcon.style.marginLeft = "10px"; 
-      submitButton.appendChild(tickIcon); 
+      submitButton.style.boxShadow = "inset 0 0 7px 1px #3bce07";
     }
 
     radioButtons.forEach((radio) => {
@@ -49,4 +80,14 @@
         }
       });
     });
+
+    function proximaPergunta() {
+        const url = new URL(window.location.href);
+        let page = parseInt(url.searchParams.get("page")) || 1;
+        page += 1;
+        url.searchParams.set("page", page);
+        url.searchParams.set("respondida", false)
+        url.searchParams.set("correta",false)
+        window.location.href = url.toString();
+    }
 </script>

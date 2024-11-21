@@ -23,7 +23,14 @@ public class QuizController : Controller
         _userManager = userManager;
     }
 
-    public async Task<IActionResult> Index([FromQuery] string nivel = "1", string lang = "html", int page = 1, string quizId = "")
+    public async Task<IActionResult> Index(
+        [FromQuery] string nivel = "1",
+        string lang = "html",
+        int page = 1,
+        string quizId = "",
+        bool respondida = false,
+        bool correta = false
+        )
     {
         var pergunta = await _perguntaRepository.GetPaginatedAsync(lang, nivel, page, 1);
 
@@ -57,6 +64,8 @@ public class QuizController : Controller
         ViewData["Page"] = page;
         ViewData["Lang"] = lang;
         ViewData["Nivel"] = nivel;
+        ViewData["Respondida"] = respondida;
+        ViewData["Correta"] = correta;
         
         return View(viewModel);
     }
@@ -69,7 +78,8 @@ public class QuizController : Controller
         var perguntaJson = TempData["Pergunta"] as string;
         var pergunta = JsonSerializer.Deserialize<Pergunta>(perguntaJson!);
         var quiz = await _quizRepository.GetQuizsAsync(quizId);
-    
+        var correta = false;
+        
         if (model.AlternativaSeleciona != pergunta!.AlternativaCorreta)
         {
             quiz.PerguntasErradas.Add(pergunta.Id);
@@ -92,12 +102,12 @@ public class QuizController : Controller
             }
 
             await _userManager.UpdateAsync(user);
-            
+            correta = true;
         }
         
         await _quizRepository.UpdateAsync(quizId, quiz);
-        
-        return RedirectToAction("Index", new { lang, nivel, page = page + 1, quizId });
+        var respondida = true;
+        return RedirectToAction("Index", new { lang, nivel, page, quizId, respondida, correta });
     }
 
 }
