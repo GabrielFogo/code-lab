@@ -16,12 +16,12 @@
 
     <div class="rewards">
         <div class="reward-card dinheiro">
-            <h3>Acertos/Erros</h3>
+            <h3>Acertos</h3>
             <div class="inside-buttons">
                 <!--Icone Moeda-->
                 <a class="bx bxs-star"></a>
                 <div>
-                    <li>Acertos: @Model.NumeroDeAcertos / @Model.NumeroDeErros </li>
+                    <li>Acertos: @Model.NumeroDeAcertos / @(Model.NumeroDeAcertos + @Model.NumeroDeErros) </li>
                 </div>
             </div>
         </div>
