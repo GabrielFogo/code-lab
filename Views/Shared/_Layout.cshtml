@@ -139,7 +139,10 @@
             }
             else
             {
-                <p>Nao é admin</p>
+                <div class="c-icones-footer">
+                    <i class="bx bx-log-out"></i>
+                    <form asp-controller="Account" asp-action="Logout" method="post"><button type="submit">Logout</button></form>
+                </div>
             }
     </footer>
 </div>

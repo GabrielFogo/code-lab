@@ -17,7 +17,7 @@
         {
             @foreach (var alternativa in Model.Alternativas)
             {
-                    <label class="radio-button">
+                    <label class="radio-button m-bottom">
                         <input type="radio" value="@alternativa.LetrasAlternativa" asp-for="@Model.AlternativaSeleciona" />
                     <span>@alternativa.Description</span>
                     </label>
@@ -57,7 +57,7 @@
         if (acertouBool) {
             submitButton.style.borderColor = "#3bce07";
             submitButton.style.color = "#3bce07";
-            submitButton.style.boxShadow = "inset 0 0 7px 1px #3bce07";
+            submitButton.style.boxShadow = "inset 0 0 7px 1px #3bce07, 0 5px 3.5px 1px #000000";
         } else if(!acertouBool && respondidaBool) {
             submitButton.style.borderColor = "#bb0000";
             submitButton.style.color = "#bb0000";
@@ -66,9 +66,10 @@
     });
     
     function changeButtonColor() {
-      submitButton.style.borderColor = "#3bce07"; 
-      submitButton.style.color = "#3bce07";
-      submitButton.style.boxShadow = "inset 0 0 7px 1px #3bce07";
+        submitButton.style.borderColor = "#2e2e2e";
+        submitButton.style.color = "#fff";
+        submitButton.style.backgroundColor = "#0e0e0e";
+        submitButton.style.boxShadow = "0 5px 3.5px 1px #000000";
     }
 
     radioButtons.forEach((radio) => {
@@ -88,4 +89,46 @@
         url.searchParams.set("correta",false)
         window.location.href = url.toString();
     }
+
+    /* -- Mudar a cor dos botões -- */
+    function corLinguagem() {
+        const url = new URL(window.location.href);  // Obtém a URL da página
+        const lang = url.searchParams.get("lang"); // Obtém o valor do parâmetro "lang"
+
+        const style = document.createElement('style');  // Cria a tag <style> uma vez
+
+        // Verifica o valor de lang e aplica a regra de estilo correspondente
+        if (lang === "javascript") {
+            style.textContent = `
+                .radio-button span:hover {
+                    border-color: #FAFF00;
+                    box-shadow: 0px 4px 4px #000000, inset 2px 4px 10px -2px #000000;
+                    background-color: #0e0e0e;
+                }
+            `;
+        } else if (lang === "html") {
+            style.textContent = `
+                .radio-button span:hover {
+                    border-color: #ff4d00;
+                    box-shadow: 0px 4px 4px #000000, inset 2px 4px 10px -2px #000000;
+                    background-color: #0e0e0e;
+                }
+            `;
+        } else if (lang === "css") {
+            style.textContent = `
+                .radio-button span:hover {
+                    border-color: #0038ff;
+                    box-shadow: 0px 4px 4px #000000, inset 2px 4px 10px -2px #000000;
+                    background-color: #0e0e0e;
+                }
+            `;
+        }
+
+        // Se lang não for nenhum dos valores esperados, pode definir um estilo padrão ou não fazer nada
+        document.head.appendChild(style);  // Adiciona a tag <style> ao cabeçalho da página
+    }
+
+    corLinguagem();
+
+
 </script>
