@@ -7,51 +7,51 @@ ViewData["Title"] = "Home Page";
 </head>
 
 <div class="container">
-    <div class="c-jornada m-bottom">
-        <h1>Jornada</h1>
-        <p class="c-jornada-p">
-            Complete quiz sobre as tags mais usadas em HTML
-        </p>
-        <div class="start">
-            <button class="btn-start" onclick="iniciarQuiz()">
-                Iniciar jornada em <span class="name-lingue">HTML</span>
-            </button>
+        <div class="c-jornada m-bottom">
+            <h1>Jornada</h1>
+            <p class="c-jornada-p">
+                Complete quiz sobre as tags mais usadas em HTML
+            </p>
+            <div class="start">
+                <button class="btn-start" onclick="iniciarQuiz()">
+                    Iniciar jornada em <span class="name-lingue">HTML</span>
+                </button>
+            </div>
+        </div>
+
+    <div class="c-dificuldade m-bottom">
+        <div class="right-dificuldade t-porcentagem">
+            <div class="c-btn-dificuldade">
+                <button class="dificuldade1" onclick="selecionaNivel('1')" id="borda-linguagem">Facil</button>
+                <button class="dificuldade2 btn-dificuldade" onclick="selecionaNivel('2')">Medio</button>
+                <button class="dificuldade3 btn-dificuldade" onclick="selecionaNivel('3')">Avançado</button>
+            </div>
         </div>
     </div>
 
-<div id="borda-linguagem" class="c-dificuldade m-bottom">
-    <div class="right-dificuldade t-porcentagem">
-        <div class="c-btn-dificuldade">
-            <button class="dificuldade1" onclick="selecionaNivel('1')">Facil</button>
-            <button class="dificuldade2 btn-dificuldade" onclick="selecionaNivel('2')">Medio</button>
-            <button class="dificuldade3 btn-dificuldade" onclick="selecionaNivel('3')">Avançado</button>
+        <div class="c-linguagens">
+            <div class="linguagens">
+                <div class="c-html p-ling">
+                    <button class="html" onclick="selecionaLinguagem('html')">Html</button>
+                </div>
+                <div class="c-css p-ling no-select">
+                    <button class="css" onclick="selecionaLinguagem('css')">Css</button>
+                </div>
+                <div class="c-js p-ling no-select">
+                    <button class="js" onclick="selecionaLinguagem('javascript')">js</button>
+                </div>
+                <div class="c-sql p-ling no-select">
+                    <h1 class="sql">SQL</h1>
+                </div>
+                <div class="c-php p-ling no-select">
+                    <h1 class="php">PHP</h1>
+                </div>
+                <div class="c-csharp p-ling no-select">
+                    <h1 class="c#">C#</h1>
+                </div>
+            </div>
         </div>
-    </div>
 </div>
-
-    <div class="c-linguagens">
-        <div class="linguagens">
-            <div class="c-html p-ling">
-                <button class="html" onclick="selecionaLinguagem('html')">Html</button>
-            </div>
-            <div class="c-css p-ling no-select">
-                <button class="css" onclick="selecionaLinguagem('css')">Css</button>
-            </div>
-            <div class="c-js p-ling no-select">
-                <button class="js" onclick="selecionaLinguagem('javascript')">js</button>
-            </div>
-            <div class="c-sql p-ling no-select">
-                <h1 class="sql">SQL</h1>
-            </div>
-            <div class="c-php p-ling no-select">
-                <h1 class="php">PHP</h1>
-            </div>
-            <div class="c-csharp p-ling no-select">
-                <h1 class="c#">C#</h1>
-            </div>
-        </div>
-    </div>
-
 
 <script>
     let linguagemSelecionada = 'html';
@@ -59,24 +59,20 @@ ViewData["Title"] = "Home Page";
 
     function selecionaLinguagem(linguagem) {
         linguagemSelecionada = linguagem;
-        const borda = document.querySelector('');
         const spanLang = document.querySelector('.name-lingue');
         console.log("linguagem:", linguagemSelecionada);
-        // Remove classes de borda anteriores
-        borda.classList.remove('borda-laranja', 'borda-azul', 'borda-amarela');
 
-        // Adiciona a nova classe de borda com base na linguagem selecionada
         switch (linguagem) {
             case 'html':
-                borda.classList.add('borda-laranja');
+              
                 spanLang.innerText = 'html';
                 break;
             case 'css':
-                borda.classList.add('borda-azul');
+               
                     spanLang.innerText = 'css';
                 break;
             case 'javascript':
-                borda.classList.add('borda-amarela');
+         
                 spanLang.innerHTML = 'js';
                 break;
             default: spanLang.innerHTML = 'html';
