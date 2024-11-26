@@ -22,7 +22,7 @@ ViewData["Title"] = "Home Page";
     <div class="c-dificuldade m-bottom">
         <div class="right-dificuldade t-porcentagem">
             <div class="c-btn-dificuldade">
-                <button class="dificuldade1" onclick="selecionaNivel('1')" id="borda-linguagem">Facil</button>
+                <button class="dificuldade1" onclick="selecionaNivel('1')" >Facil</button>
                 <button class="dificuldade2 btn-dificuldade" onclick="selecionaNivel('2')">Medio</button>
                 <button class="dificuldade3 btn-dificuldade" onclick="selecionaNivel('3')">Avançado</button>
             </div>
@@ -64,18 +64,18 @@ ViewData["Title"] = "Home Page";
 
         switch (linguagem) {
             case 'html':
-              
                 spanLang.innerText = 'html';
+                spanLang.style.color = '#ff4d00';
                 break;
             case 'css':
-               
-                    spanLang.innerText = 'css';
+                spanLang.innerText = 'css';
+                spanLang.style.color = '#0038ff';
                 break;
             case 'javascript':
-         
-                spanLang.innerHTML = 'js';
+                spanLang.innerText = 'js';
+                spanLang.style.color = '#ffaf00';
                 break;
-            default: spanLang.innerHTML = 'html';
+            default: spanLang.innerText = 'html';
                 break;
         }
     }
