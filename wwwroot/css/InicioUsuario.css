@@ -73,16 +73,17 @@
     justify-content: space-between;
 }
 
-.c-dificuldade .dificuldade1 {
+.dificuldadeActive{
     border: 1px solid var(--orange-html);
     border-radius: 7px;
     background: black;
-    color: white;
+    color: white !important;
     height: 35px;
     font-weight: 500;
 }
 
-.c-dificuldade .btn-dificuldade {
+
+.c-btn-dificuldade .dificuldade{
     border: 1px solid var(--gray-700);
     border-radius: 7px;
     background: var(--bg-fundo);
@@ -120,6 +121,40 @@
     .c-linguagens .c-html {
         background-image: linear-gradient(#FF4D00 0%, #000 100%);
     }
+
+    .c-linguagens .c-css {
+        background-image: linear-gradient(#0038ff 0%, #000 100%);
+    }
+
+    .c-linguagens .c-javascript {
+        background-image: linear-gradient(#ffaf00 0%, #000 100%);
+    }
+
+    .c-linguagens .c-php {
+        filter: blur(2px);
+       color:#2e2e2e;
+    }
+
+    .c-linguagens .c-sql {
+        filter: blur(2px);
+        color: #2e2e2e;
+    }
+
+    .c-linguagens .c-csharp {
+        filter: blur(2px);
+        color: #2e2e2e !important;
+    }
+
+
+.c-btn-difuldade button .no-select-nivel {
+    border: 1px solid var(--orange-html);
+    border-radius: 7px;
+    background: black;
+    color: white;
+    height: 35px;
+    font-weight: 500;
+}
+
 
     .c-linguagens .no-select {
         color: #000;

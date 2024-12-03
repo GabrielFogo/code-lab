@@ -22,23 +22,23 @@ ViewData["Title"] = "Home Page";
     <div class="c-dificuldade m-bottom">
         <div class="right-dificuldade t-porcentagem">
             <div class="c-btn-dificuldade">
-                <button class="dificuldade1" onclick="selecionaNivel('1')" >Facil</button>
-                <button class="dificuldade2 btn-dificuldade" onclick="selecionaNivel('2')">Medio</button>
-                <button class="dificuldade3 btn-dificuldade" onclick="selecionaNivel('3')">Avançado</button>
+                <button class="dificuldade 1 dificuldadeActive" id="btn-nivel-lang" onclick="selecionaNivel('1')">Facil</button>
+                <button class="dificuldade 2" id="btn-nivel-lang" onclick="selecionaNivel('2')">Medio</button>
+                <button class="dificuldade 3" id="btn-nivel-lang" onclick="selecionaNivel('3')">Avançado</button>
             </div>
         </div>
     </div>
 
         <div class="c-linguagens">
             <div class="linguagens">
-                <div class="c-html p-ling">
-                    <button class="html" onclick="selecionaLinguagem('html')">Html</button>
+            <div class="c-html p-ling" onclick="selecionaLinguagem('html')">
+                    <button class="html">Html</button>
                 </div>
-                <div class="c-css p-ling no-select">
-                    <button class="css" onclick="selecionaLinguagem('css')">Css</button>
-                </div>
-                <div class="c-js p-ling no-select">
-                    <button class="js" onclick="selecionaLinguagem('javascript')">js</button>
+            <div class="c-css p-ling no-select" onclick="selecionaLinguagem('css')">
+                <button class="css">Css</button>
+            </div>
+            <div class="c-javascript p-ling no-select" onclick="selecionaLinguagem('javascript')">
+                    <button class="js" >js</button>
                 </div>
                 <div class="c-sql p-ling no-select">
                     <h1 class="sql">SQL</h1>
@@ -56,36 +56,81 @@ ViewData["Title"] = "Home Page";
 <script>
     let linguagemSelecionada = 'html';
     let nivelSelecionado = '1';
+    selecionaLinguagem('html');
 
     function selecionaLinguagem(linguagem) {
         linguagemSelecionada = linguagem;
         const spanLang = document.querySelector('.name-lingue');
         console.log("linguagem:", linguagemSelecionada);
 
+        const linguagens = document.querySelectorAll('.p-ling');
+
+        linguagens.forEach((element) => {
+            if (element.classList.contains(`c-${linguagem}`)) {
+                element.classList.remove('no-select');
+            } else {
+                element.classList.add('no-select');
+            }
+        });
+
+        let corAtual = '#000'; 
         switch (linguagem) {
             case 'html':
-                spanLang.innerText = 'html';
-                spanLang.style.color = '#ff4d00';
+                spanLang.innerText = 'HTML';
+                corAtual = '#ff4d00';
                 break;
             case 'css':
-                spanLang.innerText = 'css';
-                spanLang.style.color = '#0038ff';
+                spanLang.innerText = 'CSS';
+                corAtual = '#0038ff';
                 break;
             case 'javascript':
-                spanLang.innerText = 'js';
-                spanLang.style.color = '#ffaf00';
+                spanLang.innerText = 'JS';
+                corAtual = '#ffaf00';
                 break;
-            default: spanLang.innerText = 'html';
+            default:
+                spanLang.innerText = 'HTML';
+                corAtual = '#ff4d00';
                 break;
         }
+        spanLang.style.color = corAtual;
+
+        atualizaCoresNivel(corAtual);
     }
 
     function selecionaNivel(nivel) {
         nivelSelecionado = nivel;
+
+        const niveis = document.querySelectorAll('.dificuldade');
+
+        niveis.forEach((botao) => {
+            if (botao.textContent.toLowerCase().includes(
+                nivel === '1' ? 'facil' : nivel === '2' ? 'medio' : 'avançado'
+            )) {
+                botao.classList.add('dificuldadeActive');
+            } else {
+                botao.classList.remove('dificuldadeActive');
+            }
+        });
+
+        const corAtual = document.querySelector('.name-lingue').style.color || '#000';
+        atualizaCoresNivel(corAtual);
     }
 
-    function iniciarQuiz(){
-        let query = `?lang=${encodeURIComponent(linguagemSelecionada)}&nivel=${encodeURIComponent(nivelSelecionado)}`
+    function atualizaCoresNivel(corAtual) {
+        const niveis = document.querySelectorAll('.dificuldade');
+
+        niveis.forEach((botao) => {
+            if (botao.classList.contains('dificuldadeActive')) {
+                botao.style.borderColor = corAtual;
+            } else {
+                botao.style.borderColor = '';
+            }
+        });
+    }
+
+    function iniciarQuiz() {
+        let query = `?lang=${encodeURIComponent(linguagemSelecionada)}&nivel=${encodeURIComponent(nivelSelecionado)}`;
         window.location.href = '@Url.Action("Index", "Quiz")' + query;
     }
 </script>
+
