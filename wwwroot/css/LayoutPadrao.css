@@ -1,7 +1,7 @@
 @import url(criarPergunta.css);
 @import url(root.css);
 @import url(quizIndex.css);
-@import url(InicioUsuario.css)
+@import url(InicioUsuario.css);
 
 * {
   margin: 0;
@@ -152,7 +152,9 @@ div.sidebar li .btn-sidebar {
 }
 
 .sidebar .bx-log-out {
-  width: 82.2px;
+  width: 200px;
+  padding: 0px 35px 0px;
+  height: 65px;
 }
 
 .sidebar li .btn-sidebar:hover,
@@ -161,7 +163,6 @@ div.sidebar li .btn-sidebar {
   background-color: #16495a;
   color: white;
   border-radius: 5px;
-  transition: 0.3s;
 }
 
 .cor-logo {
@@ -172,6 +173,7 @@ div.sidebar li .btn-sidebar {
   font-size: 2.1rem;
   text-decoration: none;
   color: #ffffff;
+  cursor: pointer;
 }
 
 .branco-active {
@@ -277,7 +279,7 @@ div.sidebar li .btn-sidebar {
     width: 100%;
     display: flex;
     justify-content: center;
-    height:95.9vh !important;
-    border-bottom:2px solid #2e2e2e;
+    height: 95.9vh !important;
+    border-bottom: 2px solid #2e2e2e;
   }
 }

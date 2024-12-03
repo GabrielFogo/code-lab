@@ -5,9 +5,9 @@
 }
 <div class="container-quiz">
     <form class="radio-form" asp-action="Responder" asp-controller="Quiz">
-        <textarea id="info-box" rows="6" cols="50" readonly>
+        <div id="info-box" class="text-quiz-area">
             @Model.PerguntaDescricao
-        </textarea>
+        </div>
         <div asp-validation-summary="All" class="text-red-500 text-xs"></div>
         <input type="hidden" name="page" value="@ViewData["Page"]"/>
         <input type="hidden" name="lang" value="@ViewData["Lang"]"/>
