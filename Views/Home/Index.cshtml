@@ -2,51 +2,135 @@
 ViewData["Title"] = "Home Page";
 }
 
-<div id="borda-linguagem" class="p-4 text-white borda-laranja">
-    <button onclick="selecionaLinguagem('html')">Html</button>
-    <button onclick="selecionaLinguagem('css')">Css</button>
-    <button onclick="selecionaLinguagem('javascript')">Javascript</button>
-    |
-    <button onclick="selecionaNivel('1')">Facil</button>
-    <button onclick="selecionaNivel('2')">Medio</button>
-    <button onclick="selecionaNivel('3')">Avançado</button>
-    |
-    <button onclick="iniciarQuiz()">Iniciar</button>
+<head>
+    <link href="~/css/InicioUsuario.css" rel="stylesheet" />
+</head>
+
+<div class="container">
+        <div class="c-jornada m-bottom">
+            <h1>Jornada</h1>
+            <p class="c-jornada-p">
+                Complete quiz sobre as tags mais usadas em HTML
+            </p>
+            <div class="start">
+                <button class="btn-start" onclick="iniciarQuiz()">
+                    Iniciar jornada em <span class="name-lingue">HTML</span>
+                </button>
+            </div>
+        </div>
+
+    <div class="c-dificuldade m-bottom">
+        <div class="right-dificuldade t-porcentagem">
+            <div class="c-btn-dificuldade">
+                <button class="dificuldade 1 dificuldadeActive" id="btn-nivel-lang" onclick="selecionaNivel('1')">Facil</button>
+                <button class="dificuldade 2" id="btn-nivel-lang" onclick="selecionaNivel('2')">Medio</button>
+                <button class="dificuldade 3" id="btn-nivel-lang" onclick="selecionaNivel('3')">Avançado</button>
+            </div>
+        </div>
+    </div>
+
+        <div class="c-linguagens">
+            <div class="linguagens">
+            <div class="c-html p-ling" onclick="selecionaLinguagem('html')">
+                    <button class="html">Html</button>
+                </div>
+            <div class="c-css p-ling no-select" onclick="selecionaLinguagem('css')">
+                <button class="css">Css</button>
+            </div>
+            <div class="c-javascript p-ling no-select" onclick="selecionaLinguagem('javascript')">
+                    <button class="js" >js</button>
+                </div>
+                <div class="c-sql p-ling no-select">
+                    <h1 class="sql">SQL</h1>
+                </div>
+                <div class="c-php p-ling no-select">
+                    <h1 class="php">PHP</h1>
+                </div>
+                <div class="c-csharp p-ling no-select">
+                    <h1 class="c#">C#</h1>
+                </div>
+            </div>
+        </div>
 </div>
 
 <script>
     let linguagemSelecionada = 'html';
     let nivelSelecionado = '1';
+    selecionaLinguagem('html');
 
     function selecionaLinguagem(linguagem) {
         linguagemSelecionada = linguagem;
-        const borda = document.querySelector('#borda-linguagem');
+        const spanLang = document.querySelector('.name-lingue');
         console.log("linguagem:", linguagemSelecionada);
-        // Remove classes de borda anteriores
-        borda.classList.remove('borda-laranja', 'borda-azul', 'borda-amarela');
 
-        // Adiciona a nova classe de borda com base na linguagem selecionada
+        const linguagens = document.querySelectorAll('.p-ling');
+
+        linguagens.forEach((element) => {
+            if (element.classList.contains(`c-${linguagem}`)) {
+                element.classList.remove('no-select');
+            } else {
+                element.classList.add('no-select');
+            }
+        });
+
+        let corAtual = '#000'; 
         switch (linguagem) {
             case 'html':
-                borda.classList.add('borda-laranja');
+                spanLang.innerText = 'HTML';
+                corAtual = '#ff4d00';
                 break;
             case 'css':
-                borda.classList.add('borda-azul');
+                spanLang.innerText = 'CSS';
+                corAtual = '#0038ff';
                 break;
             case 'javascript':
-                borda.classList.add('borda-amarela');
+                spanLang.innerText = 'JS';
+                corAtual = '#ffaf00';
                 break;
             default:
+                spanLang.innerText = 'HTML';
+                corAtual = '#ff4d00';
                 break;
         }
+        spanLang.style.color = corAtual;
+
+        atualizaCoresNivel(corAtual);
     }
-    
+
     function selecionaNivel(nivel) {
         nivelSelecionado = nivel;
+
+        const niveis = document.querySelectorAll('.dificuldade');
+
+        niveis.forEach((botao) => {
+            if (botao.textContent.toLowerCase().includes(
+                nivel === '1' ? 'facil' : nivel === '2' ? 'medio' : 'avançado'
+            )) {
+                botao.classList.add('dificuldadeActive');
+            } else {
+                botao.classList.remove('dificuldadeActive');
+            }
+        });
+
+        const corAtual = document.querySelector('.name-lingue').style.color || '#000';
+        atualizaCoresNivel(corAtual);
     }
-    
-    function iniciarQuiz(){
-        let query = `?lang=${encodeURIComponent(linguagemSelecionada)}&nivel=${encodeURIComponent(nivelSelecionado)}`
-        window.location.href = '@Url.Action("Index", "Quiz")' + query;   
+
+    function atualizaCoresNivel(corAtual) {
+        const niveis = document.querySelectorAll('.dificuldade');
+
+        niveis.forEach((botao) => {
+            if (botao.classList.contains('dificuldadeActive')) {
+                botao.style.borderColor = corAtual;
+            } else {
+                botao.style.borderColor = '';
+            }
+        });
+    }
+
+    function iniciarQuiz() {
+        let query = `?lang=${encodeURIComponent(linguagemSelecionada)}&nivel=${encodeURIComponent(nivelSelecionado)}`;
+        window.location.href = '@Url.Action("Index", "Quiz")' + query;
     }
 </script>
+
