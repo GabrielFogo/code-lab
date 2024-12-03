@@ -208,3 +208,18 @@ button:active{
     color: white;
     text-transform: uppercase;
 }
+
+@media screen and (min-width: 1200px){
+    .c-jornada{
+        width:45%;
+    }
+    .c-dificuldade {
+        width: 45%;
+    }
+
+    .c-linguagens{
+        max-width:1200px;
+        width:45%;
+    }
+
+}

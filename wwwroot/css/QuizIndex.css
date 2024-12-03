@@ -27,8 +27,8 @@
   font-weight: bold;
 }
 
-.m-bottom{
-    margin-bottom:35px; 
+.m-bottom {
+  margin-bottom: 35px;
 }
 
 /*Caixa de texto do formulário*/
@@ -37,18 +37,19 @@ form {
   max-width: 600px;
 }
 
-.radio-form textarea {
+.text-quiz-area {
   width: 100%;
-  margin-bottom:35px;
+  margin-bottom: 35px;
   height: 239px;
-  padding: 10px;
+  padding: 23px;
   font-size: 16px;
-  border: 2px solid #ccc;
-  border-color: #353535;
+  border: 2px solid #353535;
   border-radius: 20px;
-  resize: vertical;
   background-color: #2e2e2e;
   color: #d9d9d9;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
 }
 
 /* Inputs radio - visual de botão */
@@ -71,11 +72,11 @@ form {
 .radio-button span {
   display: flex;
   width: 100%;
-  align-items:center;
-  justify-content:center;
+  align-items: center;
+  justify-content: center;
   max-height: 90px;
   overflow-y: auto;
-  height:62px;
+  height: 62px;
   border: 2px solid white;
   border-radius: 10px;
   border-color: #2e2e2e;
@@ -87,37 +88,37 @@ form {
   box-shadow: 0px 5px 3.5px 0px #000000;
 }
 
-    .radio-button span:hover {
-        border-color: #2F9CC0;
-        box-shadow: 0px 4px 4px #000000, inset 2px 4px 10px -2px #000000;
-    }
+.radio-button span:hover {
+  border-color: #2f9cc0;
+  box-shadow: 0px 4px 4px #000000, inset 2px 4px 10px -2px #000000;
+}
 
 .buttonEnviarQuiz {
-    z-index: 999;
-    bottom: 19px;
-    position: absolute;
-    width: 87%;
-    height: 55px;
-    color: #2e2e2e;
-    font-size: 20px;
-    border-radius: 7px;
-    border: 2px solid #2e2e2e;
-    background: #121214;
-    transition: background-color 0.3s ease;
+  z-index: 999;
+  bottom: 19px;
+  position: absolute;
+  width: 87%;
+  height: 55px;
+  color: #2e2e2e;
+  font-size: 20px;
+  border-radius: 7px;
+  border: 2px solid #2e2e2e;
+  background: #121214;
+  transition: background-color 0.3s ease;
 }
 
 /* -- Tela Quiz Concluido -- */
 
 .container-concluida {
-    display: flex;
-    background-image: url("../teste.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100%;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  background-image: url("../teste.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Estilo para a mensagem de linguagem concluída */
@@ -154,7 +155,7 @@ form {
 .rewards {
   display: flex;
   gap: 20px; /* Espaço entre os cards */
-  justify-content:center;
+  justify-content: center;
 }
 
 .reward-card {
