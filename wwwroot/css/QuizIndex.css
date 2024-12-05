@@ -287,4 +287,13 @@ form {
     justify-content: center;
     gap: 3rem;
   }
+
+  .container-quiz{
+      width:100%;
+  }
+
+    .buttonEnviarQuiz {
+        bottom: 90px;
+        width: 400px;
+    }
 }
