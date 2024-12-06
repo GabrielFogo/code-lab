@@ -2,6 +2,7 @@
 using CodeLab.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace sistema_de_login_mvc.Controllers;
 
@@ -90,4 +91,67 @@ public class AccountController : Controller
         await _signInManager.SignOutAsync();
         return RedirectToAction("Login", "Account");
     }
+
+    [HttpGet]
+    [Route("ExternalLogin")]
+    public IActionResult ExternalLogin(string provider, string returnUrl = "/")
+    {
+        var redirectUrl = Url.Action("ExternalLoginCallback", "Account", new { returnUrl });
+        var properties = _signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl);
+        return Challenge(properties, provider);
+    }
+
+    [HttpGet]
+    [Route("ExternalLoginCallback")]
+    public async Task<IActionResult> ExternalLoginCallback(string? returnUrl = "/", string? remoteError = null)
+    {
+        if (remoteError != null)
+        {
+            ModelState.AddModelError(string.Empty, $"Erro no login externo: {remoteError}");
+            return RedirectToAction(nameof(Login));
+        }
+
+        var info = await _signInManager.GetExternalLoginInfoAsync();
+        if (info == null)
+        {
+            return RedirectToAction(nameof(Login));
+        }
+
+        // Verifica se o login externo já está associado a um usuário
+        var result = await _signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, isPersistent: false);
+        if (result.Succeeded)
+        {
+            return LocalRedirect(returnUrl);
+        }
+
+        // Se o usuário não existe, cria um novo
+        var email = info.Principal.FindFirstValue(System.Security.Claims.ClaimTypes.Email);
+        if (email == null)
+        {
+            ModelState.AddModelError(string.Empty, "O provedor externo não retornou um email.");
+            return RedirectToAction(nameof(Login));
+        }
+
+        var user = new ApplicationUser
+        {
+            UserName = email,
+            Email = email
+        };
+
+        var createResult = await _userManager.CreateAsync(user);
+        if (createResult.Succeeded)
+        {
+            await _userManager.AddLoginAsync(user, info);
+            await _signInManager.SignInAsync(user, isPersistent: false);
+            return LocalRedirect(returnUrl);
+        }
+
+        foreach (var error in createResult.Errors)
+        {
+            ModelState.AddModelError(string.Empty, error.Description);
+        }
+
+        return RedirectToAction(nameof(Login));
+    }
+
 }
