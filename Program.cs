@@ -34,7 +34,6 @@ builder.Services.AddAuthentication()
             ?? throw new InvalidOperationException("Google ClientId não configurado.");
         options.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"]
             ?? throw new InvalidOperationException("Google ClientSecret não configurado.");
-        options.CallbackPath = "/signin-google";
     })
     .AddFacebook(options =>
     {
