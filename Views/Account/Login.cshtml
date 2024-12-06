@@ -41,12 +41,14 @@ Layout = "_AccountLayout";
 <p class="text-xs lg:text-sm text-white text-start md:text-left">Ou entre com</p>
 
 <div class="flex justify-between mt-2">
-    <button class="bg-gray-700 p-2 rounded text-white w-1/2 mr-2">
-        <i class="fa-brands fa-google"></i>
+    <form asp-action="ExternalLogin" asp-controller="Account" method="get" style="width:100%; display:flex;">
+        <button type="submit" name="provider" target="_blank" value="Google" class="bg-gray-700 p-2 rounded text-white w-1/2 mr-2">
+            <i class="fa-brands fa-google"></i>
             Google
         </button>
-    <button class="bg-gray-700 p-2 rounded text-white w-1/2 ml-2">
-        <i class="fa-brands fa-facebook-f"></i>
-        Facebook
-    </button>
+        <button type="submit" name="provider" target="_blank" value="Facebook" class="bg-gray-700 p-2 rounded text-white w-1/2 ml-2">
+            <i class="fa-brands fa-facebook-f"></i>
+            Facebook
+        </button>
+    </form>
 </div>
