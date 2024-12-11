@@ -58,10 +58,13 @@
             submitButton.style.borderColor = "#3bce07";
             submitButton.style.color = "#3bce07";
             submitButton.style.boxShadow = "inset 0 0 7px 1px #3bce07, 0 5px 3.5px 1px #000000";
+            submitButton.innerHTML = '<i style="color:green; font-size:30px;" class="bx bx-check"></i> ' + submitButton.textContent.trim();
         } else if(!acertouBool && respondidaBool) {
             submitButton.style.borderColor = "#bb0000";
             submitButton.style.color = "#bb0000";
             submitButton.style.boxShadow = "inset 0 0 7px 1px #bb0000";
+            submitButton.innerHTML = '<i style="color:red; font-size:30px;" class="bx bx-x"></i> ' + submitButton.textContent.trim();
+
         }
     });
     
