@@ -10,7 +10,7 @@ ViewData["Title"] = "Home Page";
         <div class="c-jornada m-bottom">
             <h1>Jornada</h1>
             <p class="c-jornada-p">
-                Complete quiz sobre as tags mais usadas em HTML
+                Complete quiz sobre as tags mais usadas em <span class="name-lingue">HTML</span>
             </p>
             <div class="start">
                 <button class="btn-start" onclick="iniciarQuiz()">
@@ -60,8 +60,8 @@ ViewData["Title"] = "Home Page";
 
     function selecionaLinguagem(linguagem) {
         linguagemSelecionada = linguagem;
-        const spanLang = document.querySelector('.name-lingue');
-        console.log("linguagem:", linguagemSelecionada);
+        const spanLangs = document.querySelectorAll('.name-lingue');
+        console.log(spanLangs);
 
         const linguagens = document.querySelectorAll('.p-ling');
 
@@ -76,24 +76,35 @@ ViewData["Title"] = "Home Page";
         let corAtual = '#000'; 
         switch (linguagem) {
             case 'html':
-                spanLang.innerText = 'HTML';
+                spanLangs.forEach(span => {
+                    span.innerText = 'HTML'
+                });
                 corAtual = '#ff4d00';
                 break;
             case 'css':
-                spanLang.innerText = 'CSS';
+                spanLangs.forEach(span => {
+                    span.innerText = 'CSS'
+                });
                 corAtual = '#0038ff';
                 break;
             case 'javascript':
-                spanLang.innerText = 'JS';
+                spanLangs.forEach(span => {
+                    span.innerText = 'JS'
+                });
                 corAtual = '#ffaf00';
                 break;
             default:
-                spanLang.innerText = 'HTML';
+                spanLangs.forEach(span => {
+                    span.innerText = 'HTML'
+                });
                 corAtual = '#ff4d00';
                 break;
         }
-        spanLang.style.color = corAtual;
-
+        
+        spanLangs.forEach(span => {
+            span.style.color = corAtual;
+        })
+        
         atualizaCoresNivel(corAtual);
     }
 
